@@ -1,0 +1,6 @@
+.landingPage {
+  background-image: url('../../images/landing.png');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

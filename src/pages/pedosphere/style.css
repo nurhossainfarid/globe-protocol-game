@@ -1,24 +1,44 @@
 .pedosphere_bg {
-    background-image: url('https://i.ibb.co.com/VVdsc6b/Padosphere-bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-image: url("https://i.ibb.co.com/VVdsc6b/Padosphere-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .pedo_bg {
-    background-image: url('https://i.ibb.co.com/cQj2s37/Pado-bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("https://i.ibb.co.com/cQj2s37/Pado-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .sky_bg {
-    background-image: url(../../images/sky.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-image: url(../../images/sky.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .text_bg {
-    background-image: url('https://i.ibb.co.com/fkqM4xX/Rectangle-9254.png');
-    background-repeat: no-repeat;
-    background-size: cover; 
+  background-image: url("https://i.ibb.co.com/fkqM4xX/Rectangle-9254.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+.jaro {
+  font-family: "Jaro", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.glass_bg {
+  /* From https://css.glass */
+  background: rgba(54, 53, 53, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(54, 53, 53, 0.1);
+}
+
+

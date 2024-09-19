@@ -1,0 +1,15 @@
+/* .mapProblem {
+  position: relative;
+  display: none;
+  animation: problem infinite infinite;
+  animation-delay: 10s;
+}
+
+@keyframes problem {
+  0% {
+    display: flex;
+  }
+  100% {
+    display: block;
+  }
+} */

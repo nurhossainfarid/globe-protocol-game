@@ -1,0 +1,24 @@
+.pedosphere_bg {
+    background-image: url('https://i.ibb.co.com/VVdsc6b/Padosphere-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.pedo_bg {
+    background-image: url('https://i.ibb.co.com/cQj2s37/Pado-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.sky_bg {
+    background-image: url(../../images/sky.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.text_bg {
+    background-image: url('https://i.ibb.co.com/fkqM4xX/Rectangle-9254.png');
+    background-repeat: no-repeat;
+    background-size: cover; 
+}

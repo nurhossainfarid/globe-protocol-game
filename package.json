@@ -16,7 +16,10 @@
     "@mui/icons-material": "^6.0.1",
     "@mui/material": "^6.0.1",
     "globe-protocol-client": "file:",
+    "lottie-react": "^2.4.0",
     "react": "^18.3.1",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1"
   },

@@ -3,7 +3,6 @@ import App from "../App";
 import LandingPage from "../pages/landing-page/LandingPage";
 import GameHome from "../pages/game-home/GameHome";
 import ProblemMap from "../pages/map/ProblemMap";
-import DragDrop from "../pages/drag-drop/DragDrop";
 import Pedosphere from "../pages/pedosphere/Pedosphere";
 import PedoGame from "../pages/pedosphere/PedoGame";
 
@@ -35,10 +34,6 @@ const routes = createBrowserRouter([
           path: '/map',
           element: <ProblemMap />
         },
-        {
-          path: '/drag',
-          element: <DragDrop />
-        }
       ],
     }
   ]);

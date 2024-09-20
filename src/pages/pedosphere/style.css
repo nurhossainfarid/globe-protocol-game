@@ -31,6 +31,7 @@
   font-style: normal;
 }
 
+
 .glass_bg {
   /* From https://css.glass */
   background: rgba(54, 53, 53, 0.3);
@@ -40,5 +41,10 @@
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(54, 53, 53, 0.1);
 }
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
 
 

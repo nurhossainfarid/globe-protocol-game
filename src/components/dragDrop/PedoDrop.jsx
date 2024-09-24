@@ -21,7 +21,13 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const Drop = ({ TreeList, board, setBoard }) => {
+const PedoDrop = ({
+  TreeList,
+  board,
+  setBoard,
+  handlePopoverClose,
+  handlePopoverOpen,
+}) => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     id: "",
@@ -134,7 +140,14 @@ const Drop = ({ TreeList, board, setBoard }) => {
                   {tree.name}
                 </Typography>
               </Box>
-              <Box component="div" sx={{border: '1px solid #5A553B', padding: '5px 10px', borderRadius: '10px'}}>
+              <Box
+                component="div"
+                sx={{
+                  border: "1px solid #5A553B",
+                  padding: "5px 10px",
+                  borderRadius: "10px",
+                }}
+              >
                 <Typography
                   sx={{
                     fontFamily: "Jaro",
@@ -245,6 +258,7 @@ const Drop = ({ TreeList, board, setBoard }) => {
           </DialogActions>
         </DialogContent>
       </BootstrapDialog>
+
       <Box
         ref={drop}
         component="div"
@@ -254,6 +268,8 @@ const Drop = ({ TreeList, board, setBoard }) => {
           padding: "20px",
           margin: "0 auto",
         }}
+        onMouseEnter={handlePopoverOpen}
+        onMouseLeave={handlePopoverClose}
       >
         {board?.map((item) => (
           <Box
@@ -269,4 +285,4 @@ const Drop = ({ TreeList, board, setBoard }) => {
   );
 };
 
-export default Drop;
+export default PedoDrop;

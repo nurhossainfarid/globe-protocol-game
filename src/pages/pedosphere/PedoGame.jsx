@@ -1,15 +1,21 @@
-import { Box, Popover, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  Popover,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import Lottie from "lottie-react";
-import Clock from "../../animation/Clock.json";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
 import Earth from "../../animation/Earth.json";
-import Trophy from "../../animation/Trophy.json";
-
-import { useState } from "react";
-import Drag from "../../components/dragDrop/Drag";
-import Drop from "../../components/dragDrop/Drop";
+import Drag from "../../components/dragDrop/PedoDrag";
+import Drop from "../../components/dragDrop/PedoDrop";
+import Award from "../../components/gamePhase/Award";
 import "./style.css";
-
-const number = [1, 2, 3, 4, 5];
 
 const TreeList = [
   {
@@ -55,39 +61,71 @@ const TreeList = [
 ];
 
 const PedoGame = () => {
-  let settings = {
-    dots: false,
-    infinite: false,
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  // Dialog
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  // popover
+  const handlePopoverOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open2 = Boolean(anchorEl);
+
+  // let settings = {
+  //   dots: false,
+  //   infinite: false,
+  //   speed: 500,
+  //   slidesToShow: 6,
+  //   slidesToScroll: 1,
+  //   initialSlide: 0,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 3,
+  //         slidesToScroll: 3,
+  //         infinite: true,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 600,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 2,
+  //         initialSlide: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 480,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
+  const settings = {
+    dots: true,
+    infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 1,
     slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
   const [board, setBoard] = useState([]);
 
@@ -104,6 +142,57 @@ const PedoGame = () => {
         justifyContent: "space-between",
       }}
     >
+      <Popover
+        id="mouse-over-popover"
+        sx={{ pointerEvents: "none" }}
+        open={open2}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        onClose={handlePopoverClose}
+        disableRestoreFocus
+      >
+        <Typography sx={{ p: 1 }}>I use Popover.</Typography>
+      </Popover>
+      <Dialog
+        fullScreen={fullScreen}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="responsive-dialog-title"
+      >
+        <Box component="div" className="slider-container">
+          <Slider {...settings}>
+            {TreeList.map((tree) => (
+              <Box
+                component="div"
+                key={tree.id}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                }}
+              >
+                <Box component="img" src={tree.url} />
+                <Typography variant="h4">{tree.name}</Typography>
+              </Box>
+            ))}
+          </Slider>
+        </Box>
+        <DialogActions>
+          <Button onClick={handleClose}>
+            Skip
+          </Button>
+          <Button onClick={handleClose} >
+            Start Game
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Box
         sx={{
           display: "flex",
@@ -173,123 +262,15 @@ const PedoGame = () => {
           </Box>
         </Box>
         {/* Map */}
-        <Box
-          component="img"
-          src="https://i.ibb.co.com/JdMHyNX/map.png"
-          sx={{ height: "100px", marginTop: "-16px", marginLeft: "-20px" }}
-        />
-        {/* Award */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "end",
-            gap: "5px",
-            marginTop: "-20px",
-          }}
-        >
-          {/* Trophy */}
-          <Box component="div" sx={{ display: "flex", alignItems: "end" }}>
-            <Lottie
-              style={{ width: "100px", height: "85px", zIndex: 2 }}
-              loop
-              animationData={Trophy}
-            />
-            <Typography
-              className="jaro glass_bg"
-              variant="contained"
-              sx={{
-                borderRadius: "1px",
-                color: "white",
-                padding: "5px 30px",
-                fontSize: "20px",
-                marginLeft: "-40px",
-                marginBottom: "7px",
-                zIndex: 1,
-              }}
-            >
-              3,828,426
-            </Typography>
-            <Typography
-              sx={{
-                zIndex: 2,
-                color: "black",
-                background: "#ffcb44",
-                marginBottom: "8px",
-                padding: "0px 12px",
-                borderRadius: "5px",
-                marginLeft: "-10px",
-                fontSize: "28px",
-              }}
-            >
-              +
-            </Typography>
-          </Box>
-          {/* Heart/life */}
-          <Box component="div" sx={{ display: "flex", alignItems: "end" }}>
-            <Box
-              component="img"
-              src="https://i.ibb.co.com/PCkSDn2/heart.png"
-              sx={{ width: "60px", height: "60px", zIndex: 2 }}
-            />
-            <Box
-              className="jaro glass_bg"
-              variant="contained"
-              sx={{
-                borderRadius: "1px",
-                color: "white",
-                padding: "5px 10px",
-                fontSize: "20px",
-                marginLeft: "-40px",
-                marginBottom: "7px",
-                zIndex: 1,
-              }}
-            >
-              <Box sx={{ display: "flex", gap: "10px", paddingLeft: "30px" }}>
-                {number.map((n) => (
-                  <Typography
-                    variant="contained"
-                    key={n}
-                    sx={{
-                      zIndex: 2,
-                      background: "#5AEF42",
-                      padding: "0px 7px",
-                      borderRadius: "6px",
-                      fontSize: "16px",
-                      color: "#5A553B",
-                    }}
-                  >
-                    {n}
-                  </Typography>
-                ))}
-              </Box>
-            </Box>
-          </Box>
+        <a href="https://worldview.earthdata.nasa.gov/?v=85.51441156565696,22.98939099828811,91.57320988900048,25.86889801393965&s=90.4152,23.8041%2B88.6004,24.3746&t=2024-09-21-T14%3A26%3A02Z">
           <Box
-            component="div"
-            sx={{ display: "flex", alignItems: "center", marginTop: "-10px" }}
-          >
-            <Lottie
-              style={{ width: "100px", height: "90px", zIndex: 2 }}
-              loop
-              animationData={Clock}
-            />
-            <Typography
-              className="jaro glass_bg"
-              variant="contained"
-              sx={{
-                borderRadius: "1px",
-                color: "white",
-                padding: "0px 20px",
-                fontSize: "24px",
-                marginLeft: "-35px",
-                zIndex: 1,
-              }}
-            >
-              00:59
-            </Typography>
-          </Box>
-        </Box>
+            component="img"
+            src="https://i.ibb.co.com/JdMHyNX/map.png"
+            sx={{ height: "100px", marginTop: "-16px", marginLeft: "-20px" }}
+          />
+        </a>
+        {/* Award */}
+        <Award />
       </Box>
       <Box sx={{}}>
         <Drop TreeList={TreeList} board={board} setBoard={setBoard} />

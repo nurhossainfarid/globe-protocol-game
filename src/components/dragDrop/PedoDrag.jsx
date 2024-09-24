@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { useDrag } from "react-dnd";
 
-const Drag = ({ tree }) => {
+const PedoDrag = ({ tree }) => {
   const { id, url, name } = tree;
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "image",
@@ -36,4 +36,4 @@ const Drag = ({ tree }) => {
   );
 };
 
-export default Drag;
+export default PedoDrag;

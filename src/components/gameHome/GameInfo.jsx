@@ -23,7 +23,7 @@ import "./style.css";
 
 const topicData = [
   { img: Urbanization, title: "Pedosphere", link: "/pedosphere" },
-  { img: Pollution, title: "WATER POlLUTION" },
+  { img: Pollution, title: "Hydrosphere", link: "/hydrosphere" },
   { img: HeatWave, title: "HEAT WAVES" },
   { img: Flooding, title: "FLOODING" },
 ];

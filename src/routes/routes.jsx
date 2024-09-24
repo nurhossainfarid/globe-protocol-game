@@ -5,6 +5,8 @@ import GameHome from "../pages/game-home/GameHome";
 import ProblemMap from "../pages/map/ProblemMap";
 import Pedosphere from "../pages/pedosphere/Pedosphere";
 import PedoGame from "../pages/pedosphere/PedoGame";
+import Hydrosphere from "../pages/hydrosphere/Hydrosphere";
+import HydroGame from "../pages/hydrosphere/HydroGame";
 
 const routes = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ const routes = createBrowserRouter([
         {
           path: '/pedoGame',
           element: <PedoGame /> 
+        },
+        {
+          path: '/hydrosphere',
+          element: <Hydrosphere /> 
+        },
+        {
+          path: '/hydroGame',
+          element: <HydroGame /> 
         },
         {
           path: '/map',

@@ -1,8 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import BackButton from "../layouts/BackButton";
+import HomeButton from "../layouts/HomeButton";
 
 const GameInto = (props) => {
-    const {bg1, bg2, bg3, pic1, pic2, pic3, title, comment, nextPage} = props;
+  const { bg1, bg2, bg3, pic1, pic2, pic3, title, comment, nextPage } = props;
   return (
     <Box
       component="div"
@@ -16,12 +18,24 @@ const GameInto = (props) => {
         backgroundPosition: "center",
       }}
     >
+      <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
+        <BackButton
+          link="/home"
+          width="80px"
+          height="80px"
+        />
+        <HomeButton
+          link="/home"
+          width="80px"
+          height="80px"
+        />
+      </Box>
       <Box
         className="pedo_bg"
         component="div"
         sx={{
           position: "relative",
-          top: "8%",
+          top: "-20px",
           height: "85%",
           width: "90%",
           margin: "0 auto",
@@ -113,16 +127,8 @@ const GameInto = (props) => {
                 justifyContent: "space-between",
               }}
             >
-              <Box
-                component="img"
-                src={pic1}
-                sx={{ width: "100%" }}
-              />
-              <Box
-                component="img"
-                src={pic2}
-                sx={{ width: "100%" }}
-              />
+              <Box component="img" src={pic1} sx={{ width: "100%" }} />
+              <Box component="img" src={pic2} sx={{ width: "100%" }} />
             </Box>
             <Box
               component="img"

@@ -15,6 +15,8 @@ import Earth from "../../animation/Earth.json";
 import Drag from "../../components/dragDrop/PedoDrag";
 import Drop from "../../components/dragDrop/PedoDrop";
 import Award from "../../components/gamePhase/Award";
+import BackButton from "../../components/layouts/BackButton";
+import BigWingButton from "../../components/layouts/BigWingButton";
 import "./style.css";
 
 const TreeList = [
@@ -185,12 +187,8 @@ const PedoGame = () => {
           </Slider>
         </Box>
         <DialogActions>
-          <Button onClick={handleClose}>
-            Skip
-          </Button>
-          <Button onClick={handleClose} >
-            Start Game
-          </Button>
+          <Button onClick={handleClose}>Skip</Button>
+          <Button onClick={handleClose}>Start Game</Button>
         </DialogActions>
       </Dialog>
       <Box
@@ -200,67 +198,90 @@ const PedoGame = () => {
         }}
       >
         {/* Game Data */}
-        <Box
-          className="glass_bg"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            borderRadius: "10px",
-            height: "80px",
-            width: "30%",
-          }}
-        >
-          <Box sx={{ width: "130px" }}>
-            <Lottie loop animationData={Earth} />
+        <Box sx={{ display: "flex", flexDirection: "column", gap: '10px' }}>
+          <Box sx={{ display: "flex", alignItems: "center",}}>
+            <BackButton
+              link="/pedosphere"
+              width="100px"
+              height="100px"
+              marginLeft="-20px"
+            />
+            <Box
+              className="glass_bg"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                borderRadius: "10px",
+                height: "80px",
+              }}
+            >
+              <Box sx={{ width: "130px" }}>
+                <Lottie loop animationData={Earth} />
+              </Box>
+              <Box sx={{ display: "flex", gap: "10px" }}>
+                <Typography
+                  className="jaro"
+                  variant="contained"
+                  sx={{
+                    background: "#FFCB44",
+                    color: "white",
+                    fontSize: "18px",
+                    height: "30px",
+                    padding: "0px 16px",
+                    borderRadius: "5px",
+                    alignContent: "center",
+                  }}
+                >
+                  PH: 7.5
+                </Typography>
+                <Typography
+                  className="jaro"
+                  variant="contained"
+                  sx={{
+                    background: "#FFCB44",
+                    color: "white",
+                    fontSize: "18px",
+                    height: "30px",
+                    padding: "0px 16px",
+                    borderRadius: "5px",
+                    alignContent: "center",
+                  }}
+                >
+                  TMP: 75F
+                </Typography>
+                <Typography
+                  className="jaro"
+                  variant="contained"
+                  sx={{
+                    background: "#FFCB44",
+                    color: "white",
+                    fontSize: "18px",
+                    height: "30px",
+                    padding: "0px 16px",
+                    borderRadius: "5px",
+                    alignContent: "center",
+                  }}
+                >
+                  MTR: 7.5
+                </Typography>
+              </Box>
+            </Box>
           </Box>
-          <Box sx={{ display: "flex", gap: "10px" }}>
-            <Typography
-              className="jaro"
-              variant="contained"
-              sx={{
-                background: "#FFCB44",
-                color: "white",
-                fontSize: "18px",
-                height: "30px",
-                padding: "0px 16px",
-                borderRadius: "5px",
-                alignContent: "center",
-              }}
-            >
-              PH: 7.5
-            </Typography>
-            <Typography
-              className="jaro"
-              variant="contained"
-              sx={{
-                background: "#FFCB44",
-                color: "white",
-                fontSize: "18px",
-                height: "30px",
-                padding: "0px 16px",
-                borderRadius: "5px",
-                alignContent: "center",
-              }}
-            >
-              TMP: 75F
-            </Typography>
-            <Typography
-              className="jaro"
-              variant="contained"
-              sx={{
-                background: "#FFCB44",
-                color: "white",
-                fontSize: "18px",
-                height: "30px",
-                padding: "0px 16px",
-                borderRadius: "5px",
-                alignContent: "center",
-              }}
-            >
-              MTR: 7.5
-            </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+            }}
+          >
+            <BigWingButton
+              link="/hydrosphere"
+              height="50px"
+              marginTop="-20px"
+            />
           </Box>
         </Box>
+
         {/* Map */}
         <a href="https://worldview.earthdata.nasa.gov/?v=85.51441156565696,22.98939099828811,91.57320988900048,25.86889801393965&s=90.4152,23.8041%2B88.6004,24.3746&t=2024-09-21-T14%3A26%3A02Z">
           <Box

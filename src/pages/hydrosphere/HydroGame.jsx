@@ -4,6 +4,7 @@ import HydroDrag from "../../components/dragDrop/HydroDrag";
 import HydroDrop from "../../components/dragDrop/HydroDrop";
 import Award from "../../components/gamePhase/Award";
 import BackButton from "../../components/layouts/BackButton";
+import BigWingButton from "../../components/layouts/BigWingButton";
 
 const FishList = [
   {
@@ -72,11 +73,10 @@ const HydroGame = () => {
         height: "100vh",
         position: "relative",
         top: 0,
-        padding: '0px 20px',
+        padding: '20px',
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        alignItem: "start",
         backgroundImage: `url(${"https://i.ibb.co.com/tCrZSfR/pond-bg.png"})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -84,11 +84,12 @@ const HydroGame = () => {
       }}
     >
       <Box>
-        <Box>
-          <Box>
-            <BackButton link="/hydrosphere" width="100px" height="100px" />
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "start",}}>
+          <Box sx={{display: "flex", flexDirection: "column", alignItems: "start", marginTop: "-20px"}}>
+            <BackButton link="/hydrosphere" width="100px" height="100px" marginLeft="-20px"/>
+            <BigWingButton link="/hydrosphere" height="50px" marginTop='-20px' />
           </Box>
-          <Box sx={{ marginTop: "-110px" }}>
+          <Box sx={{ }}>
             <Award />
           </Box>
         </Box>
@@ -98,7 +99,7 @@ const HydroGame = () => {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            marginTop: "-30px",
+            marginTop: "-20px",
           }}
         >
           {/* Quarantine pond */}

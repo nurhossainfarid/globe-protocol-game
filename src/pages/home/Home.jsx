@@ -1,10 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import BackButton from "../layouts/BackButton";
-import HomeButton from "../layouts/HomeButton";
 
-const GameInto = (props) => {
-  const { bg1, bg2, bg3, pic1, pic2, pic3, title, comment, nextPage } = props;
+const Home = () => {
   return (
     <Box
       component="div"
@@ -12,37 +9,29 @@ const GameInto = (props) => {
         position: "relative",
         top: 0,
         height: "100vh",
-        backgroundImage: `url(${bg1})`,
+        backgroundImage: `url(${"https://i.ibb.co.com/3f8xDVR/hydro-bg.png"})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "bottom",
       }}
     >
-      <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
-        <BackButton
-          link="/home"
-          width="80px"
-          height="80px"
-        />
-        <HomeButton
-          link="/home"
-          width="80px"
-          height="80px"
-        />
-      </Box>
+      {/* <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <BackButton link="/home" width="80px" height="80px" />
+        <HomeButton link="/home" width="80px" height="80px" />
+      </Box> */}
       <Box
         className="pedo_bg"
         component="div"
         sx={{
           position: "relative",
-          top: "-20px",
+          top: "10%",
           height: "85%",
           width: "90%",
           margin: "0 auto",
-          backgroundImage: `url(${bg2})`,
+          backgroundImage: `url(${"https://i.ibb.co.com/3f8xDVR/hydro-bg.png"})`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: "default",
+          backgroundPosition: "bottom",
         }}
       >
         <Box
@@ -55,11 +44,8 @@ const GameInto = (props) => {
             margin: "0 auto",
             display: "flex",
             flexDirection: "column",
-            gap: "16px",
-            backgroundImage: `url(${bg3})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+              gap: "16px",
+            backgroundColor: "rgba(79, 185, 170, 0.5)"
           }}
         >
           <Box
@@ -91,7 +77,7 @@ const GameInto = (props) => {
                     fontSize: "50px",
                   }}
                 >
-                  {title}
+                  Pedosphere
                 </Typography>
               </Box>
             </Box>
@@ -110,33 +96,15 @@ const GameInto = (props) => {
                   marginTop: "50px",
                 }}
               >
-                {comment}
+                pedo
               </Typography>
             </Box>
           </Box>
           <Box
             component="div"
             sx={{ display: "flex", justifyContent: "space-around" }}
-          >
-            <Box
-              component="div"
-              sx={{
-                width: "45%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-              }}
-            >
-              <Box component="img" src={pic1} sx={{ width: "100%" }} />
-              <Box component="img" src={pic2} sx={{ width: "100%" }} />
-            </Box>
-            <Box
-              component="img"
-              src={pic3}
-              sx={{ width: "600px", height: "360px" }}
-            />
-          </Box>
-          <Link to={nextPage}>
+          ></Box>
+          <Link to={""}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <Box
                 sx={{
@@ -157,4 +125,4 @@ const GameInto = (props) => {
   );
 };
 
-export default GameInto;
+export default Home;

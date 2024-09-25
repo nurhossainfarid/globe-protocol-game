@@ -10,7 +10,7 @@ const LandingPage = () => {
         height: "100vh",
         backgroundImage: `url('https://i.ibb.co.com/GPvXCnx/Landing-Page-bg.png')`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 105%",
+        backgroundSize: "100% 115%",
         backgroundPosition: "center",
       }}
     >
@@ -28,19 +28,19 @@ const LandingPage = () => {
           display: "flex",
           justifyContent: "center",
           position: "relative",
-          top: "5%"
+          top: "5%",
+          left: "2%"
         }}
       />
       <Box
         component="img"
-        src="https://i.ibb.co.com/sPdJTVM/stella.png"
+        src="https://i.ibb.co.com/NKSsM8p/character.png"
         sx={{
-          width: "400px",
           height: "600px",
           margin: "0 auto",
           position: "absolute",
-          top: "0",
-          left: "40%",
+          top: "0px",
+          left: "32%",
           zIndex: 1,
         }}
       />
@@ -51,8 +51,8 @@ const LandingPage = () => {
           height: "270px",
           margin: "0 auto",
           position: "absolute",
-          top: "47%",
-          left: "35%",
+          top: "50%",
+          left: "33%",
           zIndex: 2,
         }}
       />
@@ -64,8 +64,8 @@ const LandingPage = () => {
             height: "120px",
             margin: "0 auto",
             position: "absolute",
-            bottom: "3%",
-            left: "47%",
+            bottom: "0%",
+            left: "45%",
             zIndex: 3,
           }}
         />

@@ -14,7 +14,7 @@ const Hydrosphere = () => {
         title="HYDROSPHERE"
         comment="Learn How to Play Step by Step, Learn About HYDROSPHERE
 and Speared Awareness !"
-        nextPage="/hydroGame"
+        nextPage="/home/hydrogame"
       />
     </Box>
   );

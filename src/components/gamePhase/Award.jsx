@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Lottie from "lottie-react";
-import Trophy from "../../animation/Trophy.json";
 import Clock from "../../animation/Clock.json";
+import Trophy from "./Trophy";
 
 const number = [1, 2, 3, 4, 5];
 
@@ -13,44 +13,11 @@ const Award = () => {
           flexDirection: "column",
           alignItems: "end",
           gap: "5px",
-          marginTop: "-20px",
+          marginTop: "-5px",
         }}
       >
         {/* Trophy */}
-        <Box component="div" sx={{ display: "flex", alignItems: "end" }}>
-          <Lottie
-            style={{ width: "80px", height: "60px", zIndex: 2 }}
-            loop
-            animationData={Trophy}
-          />
-          <Typography
-            className="jaro glass_bg"
-            variant="contained"
-            sx={{
-              borderRadius: "1px",
-              color: "white",
-              padding: "0px 30px",
-              fontSize: "20px",
-              marginLeft: "-40px",
-              zIndex: 1,
-            }}
-          >
-            3,828,426
-          </Typography>
-          <Typography
-            sx={{
-              zIndex: 2,
-              color: "black",
-              background: "#ffcb44",
-              padding: "0px 10px",
-              borderRadius: "5px",
-              marginLeft: "-10px",
-              fontSize: "21px",
-            }}
-          >
-            +
-          </Typography>
-        </Box>
+        <Trophy />
         {/* Heart/life */}
         <Box component="div" sx={{ display: "flex", alignItems: "end" }}>
           <Box

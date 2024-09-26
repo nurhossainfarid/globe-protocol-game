@@ -1,13 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import LandingPage from "../pages/landing-page/LandingPage";
-import GameHome from "../pages/game-home/GameHome";
-import ProblemMap from "../pages/map/ProblemMap";
 import Pedosphere from "../pages/pedosphere/Pedosphere";
 import PedoGame from "../pages/pedosphere/PedoGame";
 import Hydrosphere from "../pages/hydrosphere/Hydrosphere";
 import HydroGame from "../pages/hydrosphere/HydroGame";
 import Home from "../pages/home/Home";
+import PedoAwareness from "../pages/pedosphere/PedoAwareness";
 
 const routes = createBrowserRouter([
     {
@@ -26,24 +25,24 @@ const routes = createBrowserRouter([
           element: <Home />
         },
         {
-          path: '/pedosphere',
+          path: '/home/pedosphere',
           element: <Pedosphere /> 
         },
         {
-          path: '/pedoGame',
+          path: '/home/pedogame',
           element: <PedoGame /> 
         },
         {
-          path: '/hydrosphere',
+          path: '/home/pedogame/awareness',
+          element: <PedoAwareness /> 
+        },
+        {
+          path: '/home/hydrosphere',
           element: <Hydrosphere /> 
         },
         {
-          path: '/hydroGame',
+          path: '/home/hydrogame',
           element: <HydroGame /> 
-        },
-        {
-          path: '/map',
-          element: <ProblemMap />
         },
       ],
     }

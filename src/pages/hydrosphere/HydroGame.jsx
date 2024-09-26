@@ -86,7 +86,7 @@ const HydroGame = () => {
       <Box>
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "start",}}>
           <Box sx={{display: "flex", flexDirection: "column", alignItems: "start", marginTop: "-20px"}}>
-            <BackButton link="/hydrosphere" width="100px" height="100px" marginLeft="-20px"/>
+            <BackButton link="/home/hydrosphere" width="100px" height="100px" marginLeft="-20px"/>
             <BigWingButton link="/hydrosphere" height="50px" marginTop='-20px' />
           </Box>
           <Box sx={{ }}>

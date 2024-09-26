@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const HomeButton = ({ link, width, height, marginLeft }) => {
+const HomeButton = ({ link, width, height, marginLeft, marginTop }) => {
   return (
     <Link to={link}>
       <Box
@@ -11,6 +11,7 @@ const HomeButton = ({ link, width, height, marginLeft }) => {
           width: { width },
           height: { height },
           marginLeft: { marginLeft },
+          marginTop: { marginTop}
         }}
       />
     </Link>

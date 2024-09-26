@@ -87,41 +87,6 @@ const PedoGame = () => {
   };
 
   const open2 = Boolean(anchorEl);
-
-  // let settings = {
-  //   dots: false,
-  //   infinite: false,
-  //   speed: 500,
-  //   slidesToShow: 6,
-  //   slidesToScroll: 1,
-  //   initialSlide: 0,
-  //   responsive: [
-  //     {
-  //       breakpoint: 1024,
-  //       settings: {
-  //         slidesToShow: 3,
-  //         slidesToScroll: 3,
-  //         infinite: true,
-  //         dots: true,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 600,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 2,
-  //         initialSlide: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 480,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //   ],
-  // };
   const settings = {
     dots: true,
     infinite: true,
@@ -138,7 +103,8 @@ const PedoGame = () => {
         height: "100vh",
         position: "relative",
         top: 0,
-        padding: "20px",
+        padding: "0px 20px",
+        paddingBottom: '16px',
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -201,7 +167,7 @@ const PedoGame = () => {
         <Box sx={{ display: "flex", flexDirection: "column", gap: '10px' }}>
           <Box sx={{ display: "flex", alignItems: "center",}}>
             <BackButton
-              link="/pedosphere"
+              link="/home/pedosphere"
               width="100px"
               height="100px"
               marginLeft="-20px"
@@ -213,6 +179,7 @@ const PedoGame = () => {
                 alignItems: "center",
                 borderRadius: "10px",
                 height: "80px",
+                paddingRight: "20px",
               }}
             >
               <Box sx={{ width: "130px" }}>
@@ -249,21 +216,6 @@ const PedoGame = () => {
                 >
                   TMP: 75F
                 </Typography>
-                <Typography
-                  className="jaro"
-                  variant="contained"
-                  sx={{
-                    background: "#FFCB44",
-                    color: "white",
-                    fontSize: "18px",
-                    height: "30px",
-                    padding: "0px 16px",
-                    borderRadius: "5px",
-                    alignContent: "center",
-                  }}
-                >
-                  MTR: 7.5
-                </Typography>
               </Box>
             </Box>
           </Box>
@@ -275,7 +227,7 @@ const PedoGame = () => {
             }}
           >
             <BigWingButton
-              link="/hydrosphere"
+              link="/home/pedogame/awareness"
               height="50px"
               marginTop="-20px"
             />
@@ -287,7 +239,7 @@ const PedoGame = () => {
           <Box
             component="img"
             src="https://i.ibb.co.com/JdMHyNX/map.png"
-            sx={{ height: "100px", marginTop: "-16px", marginLeft: "-20px" }}
+            sx={{ height: "100px", marginLeft: "-20px" }}
           />
         </a>
         {/* Award */}

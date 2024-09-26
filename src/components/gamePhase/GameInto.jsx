@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import BackButton from "../layouts/BackButton";
 import HomeButton from "../layouts/HomeButton";
+import ContinueButton from "../layouts/ContinueButton";
 
 const GameInto = (props) => {
   const { bg1, bg2, bg3, pic1, pic2, pic3, title, comment, nextPage } = props;
@@ -136,21 +137,8 @@ const GameInto = (props) => {
               sx={{ width: "600px", height: "360px" }}
             />
           </Box>
-          <Link to={nextPage}>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <Box
-                sx={{
-                  width: "230px",
-                  position: "absolute",
-                  bottom: "-50px",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-                component="img"
-                src="https://i.ibb.co.com/XpqCWKs/continue-Btn.png"
-              />
-            </Box>
-          </Link>
+          {/* Continue Button */}
+          <ContinueButton nextPage={nextPage} />
         </Box>
       </Box>
     </Box>

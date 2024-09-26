@@ -15,7 +15,7 @@ const Pedosphere = () => {
         pic3="https://i.ibb.co.com/k01XghB/Group-22713.png"
         title="PEDOSPHERE"
         comment="Learn How to Play Step by Step, Learn About Pedosphere and Speared Awareness !"
-        nextPage="/pedoGame"
+        nextPage="/home/pedogame"
       />
     </Box>
   );

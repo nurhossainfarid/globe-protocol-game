@@ -138,7 +138,7 @@ const GameInto = (props) => {
             />
           </Box>
           {/* Continue Button */}
-          <ContinueButton nextPage={nextPage} />
+          <ContinueButton nextPage={nextPage} bottom="-50px" />
         </Box>
       </Box>
     </Box>

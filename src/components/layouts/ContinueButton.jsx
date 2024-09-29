@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ContinueButton = ({nextPage}) => {
+const ContinueButton = ({nextPage, bottom}) => {
     return (
         <Link to={nextPage}>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -9,7 +9,7 @@ const ContinueButton = ({nextPage}) => {
             sx={{
               width: "230px",
               position: "absolute",
-              bottom: "-50px",
+              bottom: {bottom},
               display: "flex",
               justifyContent: "center",
             }}

@@ -1,5 +1,5 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, Popover } from "@mui/material";
+import { Box, Popover, Slide } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -8,8 +8,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { useDrop } from "react-dnd";
+import { toast } from "react-toastify";
 import "./style.css";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -21,6 +22,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const PedoDrop = ({
   TreeList,
   board,
@@ -28,7 +33,15 @@ const PedoDrop = ({
   handlePopoverClose,
   handlePopoverOpen,
 }) => {
-  const [open, setOpen] = useState(false);
+  const [openError, setOpenError] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
+
+  const handleCloseError = () => {
+    setOpenError(false);
+  };
+  const handleCloseSuccess = () => {
+    setOpenSuccess(false);
+  };
   const [data, setData] = useState({
     id: "",
     url: "",
@@ -46,9 +59,6 @@ const PedoDrop = ({
 
   const openPop = Boolean(anchorEl);
   const id = openPop ? "simple-popover" : undefined;
-  const handleClose = () => {
-    setOpen(false);
-  };
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "image",
     drop: (item) => addImageToBoard(item.id),
@@ -67,13 +77,25 @@ const PedoDrop = ({
       list[0].name === "Garlic"
     ) {
       setBoard((board) => [...board, list[0]]);
+      toast.success("Tree plant Successfully");
+      setData({
+        id: list[0].id,
+        url: list[0].url,
+        name: list[0].name,
+        pH: list[0].pH,
+        Temperature: list[0].Temperature,
+        SoilType: list[0].SoilType,
+        Available: list[0].Available
+      });
+      setOpenSuccess(true);
     } else {
+      toast.error("Failed to plant tree");
       setData({
         id: list[0].id,
         url: list[0].url,
         name: list[0].name,
       });
-      setOpen(true);
+      setOpenError(true);
     }
   };
 
@@ -189,13 +211,12 @@ const PedoDrop = ({
           ))}
         </Box>
       </Popover>
+      {/* Success Dialog */}
       <BootstrapDialog
-        onClose={handleClose}
         aria-labelledby="customized-dialog-title"
-        open={open}
-        sx={{}}
+        open={openSuccess}
       >
-        <Box component="div" sx={{ background: "#208ba2" }}>
+        <Box component="div" sx={{ background: "green", }}>
           <DialogTitle
             sx={{
               m: 0,
@@ -208,11 +229,11 @@ const PedoDrop = ({
             }}
             id="customized-dialog-title"
           >
-            Opps...
+            Correct...
           </DialogTitle>
           <IconButton
             aria-label="close"
-            onClick={handleClose}
+            onClick={handleCloseSuccess}
             sx={(theme) => ({
               position: "absolute",
               right: 8,
@@ -235,7 +256,91 @@ const PedoDrop = ({
         >
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box component="img" src={data.url} sx={{ width: "150px" }} />
-            <Typography gutterBottom>
+            <Box component="div">
+              <Typography
+                variant="h4"
+                sx={{ fontFamily: "Jaro",}}
+              >
+                {data.name}
+              </Typography>
+              <Box
+                sx={{
+      
+                }}
+              >
+                <Typography sx={{ fontFamily: "Jaro", }}>
+                  Ph: {data.pH}
+                </Typography>
+                <Typography sx={{ fontFamily: "Jaro", }}>
+                  Temperature: {data.Temperature}
+                </Typography>
+                <Typography sx={{ fontFamily: "Jaro", }}>
+                  Soil Type: {data.SoilType}
+                </Typography>
+                <Typography sx={{ fontFamily: "Jaro", }}>
+                  Grow's In: {data.Available}
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+          <DialogActions>
+            <Button
+              variant="contained"
+              sx={{ background: "green" }}
+              onClick={handleCloseSuccess}
+            >
+              Claim trophy
+            </Button>
+          </DialogActions>
+        </DialogContent>
+      </BootstrapDialog>
+      {/* Error Dialog */}
+      <BootstrapDialog
+        aria-labelledby="customized-dialog-title"
+        open={openError}
+        sx={{}}
+      >
+        <Box component="div" sx={{ background: "red" }}>
+          <DialogTitle
+            sx={{
+              m: 0,
+              p: 2,
+              textAlign: "center",
+              color: "white",
+              fontFamily: "Poppins",
+              fontWeight: "800",
+              fontSize: "24px",
+            }}
+            id="customized-dialog-title"
+          >
+            Wrong...
+          </DialogTitle>
+          <IconButton
+            aria-label="close"
+            onClick={handleCloseError}
+            sx={(theme) => ({
+              position: "absolute",
+              right: 8,
+              top: 8,
+              color: "white",
+            })}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Box>
+        <DialogContent
+          dividers
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Box component="img" src={data.url} sx={{ width: "150px" }} />
+            <Typography sx={{fontFamily: "Poppins", fontSize:'18px'}}>
               {data.name} is not a perfect tree for this soil. This tree is
               perfect for pH: 8, TMP: 80F, MTR: 8.
             </Typography>
@@ -251,7 +356,7 @@ const PedoDrop = ({
             <Button
               variant="contained"
               sx={{ background: "red" }}
-              onClick={handleClose}
+              onClick={handleCloseError}
             >
               Retry
             </Button>

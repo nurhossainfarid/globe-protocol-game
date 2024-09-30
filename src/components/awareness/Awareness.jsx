@@ -100,7 +100,7 @@ const Awareness = ({
           flexDirection: "column",
           marginLeft: "60px",
           marginRight: "60px",
-          marginTop: "-50px",
+          marginTop: "-20px",
         }}
       >
         {/* Text Part */}

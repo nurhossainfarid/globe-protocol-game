@@ -24,41 +24,80 @@ const TreeList = [
     id: 1,
     url: "https://i.ibb.co.com/bsMgGHF/strawberry.png",
     name: "Strawberry",
+    pH: "4.5-5.5",
+    Temperature: "0-20°C",
+    SoilType: "Berries and Evergreens, Leafy Greens and Root Vegetables",
+    Available: "USA, Spain, Japan",
   },
   {
     id: 2,
     url: "https://i.ibb.co.com/Kmr3HqF/tomato.png",
     name: "Tomato",
+    pH: "5.5-7.5",
+    Temperature: "10-28°C",
+    SoilType:
+      "Leafy Greens and Root Vegetables, Warm-Season Fruits and Vegetables, Stone Fruits, Medicinal Plants",
+    Available: "USA, Mexico, Italy, South Asia",
   },
   {
     id: 3,
     url: "https://i.ibb.co.com/qRq3NJz/carrot.png",
     name: "Carrot",
+    pH: "5.5-7.0",
+    Temperature: "8-25°C",
+    SoilType:
+      "Cool-Season Grains, Root Crops, Leafy Greens and Root Vegetables, Legumes and Nitrogen-Fixers",
+    Available: "France, USA, South Asia",
   },
   {
     id: 4,
     url: "https://i.ibb.co.com/YkZf1qt/garlic.png",
     name: "Garlic",
+    pH: "5.5-7.0",
+    Temperature: "8-25°C",
+    SoilType:
+      "Cool-Season Grains, Root Crops, Leafy Greens and Root Vegetables, Legumes and Nitrogen-Fixers",
+    Available: "China, India, Egypt",
   },
   {
     id: 5,
     url: "https://i.ibb.co.com/jbqr66x/onion.png",
     name: "Onion",
+    pH: "5.5-7.0",
+    Temperature: "8-28°C",
+    SoilType:
+      "Cool-Season Grains, Root Crops, Legumes and Nitrogen-Fixers, Medicinal Plants",
+    Available: "USA, India, Egypt",
   },
   {
     id: 6,
     url: "https://i.ibb.co.com/vBzgCf4/photato.png",
-    name: "Photato",
+    name: "Potato",
+    pH: "5.5-6.5",
+    Temperature: "10-18°C or 18-28°C",
+    SoilType:
+      "Root Crops, Leafy Greens and Root Vegetables, Medicinal Plants",
+    Available: "Bangladesh, India, USA",
   },
   {
     id: 7,
     url: "https://i.ibb.co.com/wSWB2nX/eggplant.png",
     name: "Eggplant",
+    pH: "6.5-7.5",
+    Temperature: "18-25°C",
+    SoilType:
+      "Warm-Season Fruits and Vegetables",
+    Available: "India, China, Turkey",
   },
   {
     id: 8,
     url: "https://i.ibb.co.com/V9v1xcH/chilli.png",
     name: "Chilli",
+    pH: "5.5-7.0",
+    Temperature: "8-20°C",
+    SoilType:
+      "Cool-Season Grains, Leafy Greens and Root Vegetables",
+    Available: "India, Thailand, Mexico",
   },
 ];
 
@@ -88,7 +127,6 @@ const PedoGame = () => {
 
   const open2 = Boolean(anchorEl);
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -104,7 +142,7 @@ const PedoGame = () => {
         position: "relative",
         top: 0,
         padding: "0px 20px",
-        paddingBottom: '16px',
+        paddingBottom: "16px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -134,28 +172,85 @@ const PedoGame = () => {
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <Box component="div" className="slider-container">
+        <Box
+          component="div"
+          className="slider-container"
+          sx={{ background: "#33abb5", borderRadius: '10px', margin: '5px' }}
+        >
           <Slider {...settings}>
             {TreeList.map((tree) => (
-              <Box
-                component="div"
-                key={tree.id}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                }}
-              >
-                <Box component="img" src={tree.url} />
-                <Typography variant="h4">{tree.name}</Typography>
+              <Box component="div" key={tree.id}>
+                <Box
+                  component="div"
+                  sx={{ display: "flex", flexDirection: "column" }}
+                >
+                  <Box
+                    component="div"
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      gap: "16px",
+                      marginTop: "10px",
+                    }}
+                  >
+                    <Box component="img" src={tree.url} />
+                    {/* Plant Info */}
+                    <Box component="div">
+                      <Typography
+                        variant="h4"
+                        sx={{ fontFamily: "Jaro", color: "white" }}
+                      >
+                        {tree.name}
+                      </Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "1px",
+                        }}
+                      >
+                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
+                          Ph: {tree.pH}
+                        </Typography>
+                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
+                          Temperature: {tree.Temperature}
+                        </Typography>
+                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
+                          Soil Type: {tree.SoilType}
+                        </Typography>
+                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
+                          Grow's In: {tree.Available}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
               </Box>
             ))}
           </Slider>
+          <DialogActions sx={{ marginTop: "-20px" }}>
+            <Box
+              component="div"
+              sx={{ display: "flex", justifyContent: "end", gap: "10px" }}
+            >
+              <Button
+                variant="contained"
+                sx={{ background: "white", color: "black" }}
+                onClick={handleClose}
+              >
+                Skip
+              </Button>
+              <Button
+                variant="contained"
+                sx={{ background: "white", color: "black" }}
+                onClick={handleClose}
+              >
+                Start Game
+              </Button>
+            </Box>
+          </DialogActions>
         </Box>
-        <DialogActions>
-          <Button onClick={handleClose}>Skip</Button>
-          <Button onClick={handleClose}>Start Game</Button>
-        </DialogActions>
       </Dialog>
       <Box
         sx={{
@@ -164,8 +259,8 @@ const PedoGame = () => {
         }}
       >
         {/* Game Data */}
-        <Box sx={{ display: "flex", flexDirection: "column", gap: '10px' }}>
-          <Box sx={{ display: "flex", alignItems: "center",}}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
             <BackButton
               link="/home/pedosphere"
               width="100px"

@@ -193,14 +193,14 @@ const Home = () => {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  borderRadius: "10px",
+                  borderRadius: "10px", 
                   border: topic === "hydrosphere" ? "5px solid black" : "",
                 }}
               >
                 <Box
-                  component="img"
-                  src="https://i.ibb.co.com/WpwcKxs/Rectangle-9257.png"
-                  sx={{ width: "250px", height: "180px" }}
+                  component="iframe"
+                  src="https://giphy.com/embed/MF6ftI1Ge4mApyyauo"
+                  sx={{  width: '100%', height: '100%', border: 'none' }}
                 />
                 <Typography
                   sx={{

@@ -1,5 +1,14 @@
-import { Box, Typography } from "@mui/material";
-import { useState } from "react";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
 import HydroDrag from "../../components/dragDrop/HydroDrag";
 import HydroDrop from "../../components/dragDrop/HydroDrop";
 import Award from "../../components/gamePhase/Award";
@@ -11,61 +20,68 @@ const FishList = [
     id: 1,
     url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
     name: "Tortoise",
+    Salinity: "35 - 45 ppt (High Saltwater)",
+    Oxygen: "5 - 9 mg/L (Moderate)",
+    WaterType: "Warm-Season Fruits and Vegetables",
+    Available: "India, China, Turkey",
   },
   {
     id: 2,
     url: "https://i.ibb.co.com/BrVvFxR/redfish.gif",
-    name: "Red Fish",
+    name: "Orange Fish",
   },
   {
     id: 3,
-    url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
-    name: "Tortoise",
+    url: "https://i.ibb.co.com/D423Jxq/whitefish.gif",
+    name: "White",
   },
   {
     id: 4,
-    url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
-    name: "Tortoise",
+    url: "https://i.ibb.co.com/4pmM9xQ/jellyfish.gif",
+    name: "Jelly Fish",
   },
   {
     id: 5,
-    url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
-    name: "Tortoise",
+    url: "https://i.ibb.co.com/cv8N4Ky/sea-hourse.gif",
+    name: "Sea Horse",
   },
   {
     id: 6,
-    url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
-    name: "Tortoise",
+    url: "https://i.ibb.co.com/crFQ2wP/Naffe.png",
+    name: "Red Fish",
   },
   {
     id: 7,
-    url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
-    name: "Tortoise",
+    url: "https://i.ibb.co.com/hCqZWgL/octopus.gif",
+    name: "Octopus",
   },
   {
     id: 8,
-    url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
-    name: "Tortoise",
-  },
-  {
-    id: 9,
-    url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
-    name: "Tortoise",
-  },
-  {
-    id: 10,
-    url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
-    name: "Tortoise",
-  },
-  {
-    id: 11,
-    url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
-    name: "Tortoise",
+    url: "https://i.ibb.co.com/WtcRpGc/crab.gif[/img]",
+    name: "Crab",
   },
 ];
 
 const HydroGame = () => {
   const [board, setBoard] = useState([]);
+  const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+  // Dialog
+  useEffect(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <Box
       component="div"
@@ -73,7 +89,7 @@ const HydroGame = () => {
         height: "100vh",
         position: "relative",
         top: 0,
-        padding: '20px',
+        padding: "20px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -83,13 +99,124 @@ const HydroGame = () => {
         backgroundPosition: "center",
       }}
     >
+      <Dialog
+        fullScreen={fullScreen}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="responsive-dialog-title"
+      >
+        <Box
+          component="div"
+          className="slider-container"
+          sx={{ background: "#33abb5", borderRadius: "10px", margin: "5px" }}
+        >
+          <Slider {...settings}>
+            {FishList.map((data) => (
+              <Box component="div" key={data.id}>
+                <Box
+                  component="div"
+                  sx={{ display: "flex", flexDirection: "column" }}
+                >
+                  <Box
+                    component="div"
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginTop: "10px",
+                      gap: "10px",
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={data.url}
+                      sx={{ height: "200px" }}
+                    />
+                    {/* Plant Info */}
+                    <Box component="div">
+                      <Typography
+                        variant="h4"
+                        sx={{ fontFamily: "Jaro", color: "white" }}
+                      >
+                        {data.name}
+                      </Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "1px",
+                        }}
+                      >
+                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
+                          Salinity: {data.Salinity}
+                        </Typography>
+                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
+                          Oxygen: {data.Oxygen}
+                        </Typography>
+                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
+                          Water Type: {data.WaterType}
+                        </Typography>
+                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
+                          Grow's In: {data.Available}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
+            ))}
+          </Slider>
+          <DialogActions sx={{ marginTop: "-20px" }}>
+            <Box
+              component="div"
+              sx={{ display: "flex", justifyContent: "end", gap: "10px" }}
+            >
+              <Button
+                variant="contained"
+                sx={{ background: "white", color: "black" }}
+                onClick={handleClose}
+              >
+                Skip
+              </Button>
+              <Button
+                variant="contained"
+                sx={{ background: "white", color: "black" }}
+                onClick={handleClose}
+              >
+                Start Game
+              </Button>
+            </Box>
+          </DialogActions>
+        </Box>
+      </Dialog>
       <Box>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "start",}}>
-          <Box sx={{display: "flex", flexDirection: "column", alignItems: "start", marginTop: "-20px"}}>
-            <BackButton link="/home/hydrosphere" width="100px" height="100px" marginLeft="-20px"/>
-            <BigWingButton link="/hydrosphere" height="50px" marginTop='-20px' />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "start",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+              marginTop: "-20px",
+            }}
+          >
+            <BackButton
+              link="/home/hydrosphere"
+              width="100px"
+              height="100px"
+              marginLeft="-20px"
+            />
+            <BigWingButton
+              link="/home/hydro/awareness"
+              height="50px"
+              marginTop="-20px"
+            />
           </Box>
-          <Box sx={{ }}>
+          <Box sx={{}}>
             <Award />
           </Box>
         </Box>
@@ -175,7 +302,7 @@ const HydroGame = () => {
                             color: "#5A553B",
                           }}
                         >
-                          PH:
+                          Salinity:
                         </Typography>
                         <Typography
                           sx={{
@@ -203,7 +330,7 @@ const HydroGame = () => {
                             color: "#5A553B",
                           }}
                         >
-                          Temperature:
+                          Dissolved Oxygen:
                         </Typography>
                         <Typography
                           sx={{
@@ -225,7 +352,7 @@ const HydroGame = () => {
                 <HydroDrag fish={FishList[0]} top={170} left={520} />
                 {/* Red Fish */}
                 <HydroDrag fish={FishList[1]} top={220} left={125} />
-                <HydroDrag fish={FishList[2]} top={230} left={250} />
+                <HydroDrag fish={FishList[2]} top={220} left={250} />
                 <HydroDrag fish={FishList[3]} top={220} left={400} />
                 <HydroDrag fish={FishList[4]} top={230} left={500} />
                 <HydroDrag fish={FishList[5]} top={270} left={200} />

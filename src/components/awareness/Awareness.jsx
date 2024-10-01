@@ -10,12 +10,15 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 import { forwardRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import Slider from "react-slick";
+import { increment } from "../../store/features/trophy/trophySlice";
 import Trophy from "../gamePhase/Trophy";
 import BackButton from "../layouts/BackButton";
 import HomeButton from "../layouts/HomeButton";
 import Side from "./Side";
 import TabPanel from "./TabPanel";
+import { Link } from "react-router-dom";
 
 function a11yProps(index) {
   return {
@@ -37,6 +40,7 @@ const Awareness = ({
   main_bg,
   secondary_bg,
 }) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const [value, setValue] = useState(0);
@@ -184,7 +188,14 @@ const Awareness = ({
                       index={data.id}
                       dir={theme.direction}
                     >
-                      <Box sx={{ marginTop: "-10px", display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                      <Box
+                        sx={{
+                          marginTop: "-10px",
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "10px",
+                        }}
+                      >
                         <Box>
                           <Typography
                             variant="h6"
@@ -197,7 +208,7 @@ const Awareness = ({
                               fontFamily: "Poppins",
                               color: "#92a2a1",
                               textAlign: "justify",
-                              fontSize: '15px'
+                              fontSize: "15px",
                             }}
                           >
                             {data.why}
@@ -215,7 +226,7 @@ const Awareness = ({
                               fontFamily: "Poppins",
                               color: "#92a2a1",
                               textAlign: "justify",
-                              fontSize: '15px'
+                              fontSize: "15px",
                             }}
                           >
                             {data.how}
@@ -233,7 +244,7 @@ const Awareness = ({
                               fontFamily: "Poppins",
                               color: "#92a2a1",
                               textAlign: "justify",
-                              fontSize: '15px'
+                              fontSize: "15px",
                             }}
                           >
                             {data.what}
@@ -382,10 +393,15 @@ const Awareness = ({
                 </Typography>
               </Box>
             </DialogContent>
-            <DialogActions sx={{ marginTop: "-20px" }}>
-              <Button variant="contained" onClick={handleClose}>
-                Ok
-              </Button>
+            <DialogActions
+              sx={{ marginTop: "-20px" }}
+              onClick={() => dispatch(increment(1000))}
+            >
+              <Link to="/home">
+                <Button variant="contained" onClick={handleClose}>
+                  Ok
+                </Button>
+              </Link>
             </DialogActions>
           </Box>
         </Dialog>

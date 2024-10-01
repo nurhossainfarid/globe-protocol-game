@@ -18,6 +18,8 @@ import Award from "../../components/gamePhase/Award";
 import BackButton from "../../components/layouts/BackButton";
 import BigWingButton from "../../components/layouts/BigWingButton";
 import "./style.css";
+import { useDispatch } from "react-redux";
+import { increment } from "../../store/features/trophy/trophySlice";
 
 const TreeList = [
   {
@@ -102,16 +104,12 @@ const TreeList = [
 ];
 
 const PedoGame = () => {
-  const [trophy, setTrophy] = useState(100);
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-  const handleTrophy = (claim) => {
-    console.log(claim);
-    setTrophy(trophy + claim)
-  }
   // Dialog
   useEffect(() => {
     setOpen(true);
@@ -325,7 +323,6 @@ const PedoGame = () => {
               flexDirection: "column",
               alignItems: "start",
             }}
-            onClick={() => handleTrophy(1000)}
           >
             <BigWingButton
               link="/home/pedogame/awareness"
@@ -344,10 +341,10 @@ const PedoGame = () => {
           />
         </a>
         {/* Award */}
-        <Award trophy={trophy} setTrophy={setTrophy} />
+        <Award />
       </Box>
       <Box sx={{}}>
-        <Drop TreeList={TreeList} board={board} setBoard={setBoard} handleTrophy={handleTrophy}/>
+        <Drop TreeList={TreeList} board={board} setBoard={setBoard}/>
       </Box>
       <Box
         className="slider-container"

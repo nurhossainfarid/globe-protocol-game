@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './features/counter/counterSlice'
+import trophyReducer from './features/trophy/trophySlice'
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer
+        trophy: trophyReducer
     }
 })

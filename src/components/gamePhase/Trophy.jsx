@@ -2,8 +2,11 @@ import { Box, Typography } from "@mui/material";
 import Lottie from "lottie-react";
 import TrophyAnimation from "../../animation/Trophy.json";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const Trophy = ({trophy}) => {
+const Trophy = () => {
+  const { value } = useSelector((state) => state.trophy);
+
   return (
     <Box component="div" sx={{ display: "flex", alignItems: "end" }}>
       <Lottie
@@ -23,7 +26,7 @@ const Trophy = ({trophy}) => {
           zIndex: 1,
         }}
       >
-        {trophy}
+        {value}
       </Typography>
       <Typography
         sx={{

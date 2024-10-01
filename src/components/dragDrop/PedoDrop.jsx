@@ -10,7 +10,9 @@ import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { forwardRef, useState } from "react";
 import { useDrop } from "react-dnd";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { decrement, increment } from "../../store/features/trophy/trophySlice";
 import "./style.css";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -32,7 +34,7 @@ const PedoDrop = ({
   setBoard,
   handlePopoverClose,
   handlePopoverOpen,
-  handleTrophy
+  handleTrophy,
 }) => {
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
@@ -86,19 +88,25 @@ const PedoDrop = ({
         pH: list[0].pH,
         Temperature: list[0].Temperature,
         SoilType: list[0].SoilType,
-        Available: list[0].Available
+        Available: list[0].Available,
       });
       setOpenSuccess(true);
     } else {
-      toast.error("Failed to plant tree");
+      dispatch(decrement(20));
       setData({
         id: list[0].id,
         url: list[0].url,
         name: list[0].name,
       });
       setOpenError(true);
+      toast.error("Failed to plant tree");
     }
   };
+
+  // Trophy
+  const value = useSelector((state) => state.trophy.value);
+  const dispatch = useDispatch();
+  console.log(value);
 
   return (
     <div>
@@ -217,7 +225,7 @@ const PedoDrop = ({
         aria-labelledby="customized-dialog-title"
         open={openSuccess}
       >
-        <Box component="div" sx={{ background: "green", }}>
+        <Box component="div" sx={{ background: "green" }}>
           <DialogTitle
             sx={{
               m: 0,
@@ -258,27 +266,20 @@ const PedoDrop = ({
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box component="img" src={data.url} sx={{ width: "150px" }} />
             <Box component="div">
-              <Typography
-                variant="h4"
-                sx={{ fontFamily: "Jaro",}}
-              >
+              <Typography variant="h4" sx={{ fontFamily: "Jaro" }}>
                 {data.name}
               </Typography>
-              <Box
-                sx={{
-      
-                }}
-              >
-                <Typography sx={{ fontFamily: "Jaro", }}>
+              <Box sx={{}}>
+                <Typography sx={{ fontFamily: "Jaro" }}>
                   Ph: {data.pH}
                 </Typography>
-                <Typography sx={{ fontFamily: "Jaro", }}>
+                <Typography sx={{ fontFamily: "Jaro" }}>
                   Temperature: {data.Temperature}
                 </Typography>
-                <Typography sx={{ fontFamily: "Jaro", }}>
+                <Typography sx={{ fontFamily: "Jaro" }}>
                   Soil Type: {data.SoilType}
                 </Typography>
-                <Typography sx={{ fontFamily: "Jaro", }}>
+                <Typography sx={{ fontFamily: "Jaro" }}>
                   Grow's In: {data.Available}
                 </Typography>
               </Box>
@@ -288,7 +289,7 @@ const PedoDrop = ({
             <Button
               variant="contained"
               sx={{ background: "green" }}
-              onClick={() => handleTrophy(50)}
+              onClick={() => dispatch(increment(50))}
             >
               Claim trophy
             </Button>
@@ -341,19 +342,21 @@ const PedoDrop = ({
         >
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box component="img" src={data.url} sx={{ width: "150px" }} />
-            <Typography sx={{fontFamily: "Poppins", fontSize:'18px'}}>
+            <Typography sx={{ fontFamily: "Poppins", fontSize: "18px" }}>
               {data.name} is not a perfect tree for this soil. This tree is
               perfect for pH: 8, TMP: 80F, MTR: 8.
             </Typography>
           </Box>
           <DialogActions>
-            <Button
-              variant="contained"
-              sx={{ background: "green" }}
-              onClick={handleClickPop}
-            >
-              Learn Again
-            </Button>
+            <Box onClick={() => dispatch(increment(10))}>
+              <Button
+                variant="contained"
+                sx={{ background: "green" }}
+                onClick={handleClickPop}
+              >
+                Learn Again
+              </Button>
+            </Box>
             <Button
               variant="contained"
               sx={{ background: "red" }}

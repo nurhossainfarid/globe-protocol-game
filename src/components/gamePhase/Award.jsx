@@ -5,7 +5,8 @@ import Trophy from "./Trophy";
 
 const number = [1, 2, 3, 4, 5];
 
-const Award = ({ trophy, setTrophy }) => {
+
+const Award = () => {
   return (
     <Box
       sx={{
@@ -17,7 +18,7 @@ const Award = ({ trophy, setTrophy }) => {
       }}
     >
       {/* Trophy */}
-      <Trophy trophy={trophy} />
+      <Trophy />
       {/* Heart/life */}
       <Box component="div" sx={{ display: "flex", alignItems: "end" }}>
         <Box

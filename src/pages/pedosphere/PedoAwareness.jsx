@@ -5,18 +5,18 @@ const leftSideData = [
   {
     id: 1,
     image: "https://i.ibb.co.com/Sws3VBN/pedo-awareness-1.png",
-    title: "Land Surface",
+    title: "Drought",
   },
   {
     id: 2,
     image: "https://i.ibb.co.com/qg25TyM/drought.png",
-    title: "Drought",
+    title: "Drought Map",
     url: "https://worldview.earthdata.nasa.gov/?v=-11.713535597329738,-25.70190556372867,181.43884350342586,66.0957746078544&l=NDH_Drought_Proportional_Economic_Loss_Risk_Deciles_2000,NDH_Drought_Mortality_Risks_Distribution_2000,NDH_Drought_Hazard_Frequency_Distribution_1980-2000&lg=false&l1=HLS_SAVI_Landsat(bandCombo=%7B%22assets%22%3A%5B%22B05%22;%22B04%22%5D;%22expression%22%3A%221.5*%3C%3CB05-B04%3E%2F%3CB05%2BB04%2B0.5%3E%3E%22;%22rescale%22%3A%22-1;1%22;%22colormap_name%22%3A%22brbg%22%7D),HLS_EVI_Landsat(bandCombo=%7B%22assets%22%3A%5B%22B05%22;%22B04%22;%22B02%22%5D;%22expression%22%3A%22%3C2.5*%3CB05-B04%3E%3E%2F%3CB05%2B6*B04-7.5*B02%2B1%3E%22;%22rescale%22%3A%22-1;1%22;%22colormap_name%22%3A%22brbg%22%7D),HLS_NDVI_Landsat(bandCombo=%7B%22assets%22%3A%5B%22B05%22;%22B04%22%5D;%22expression%22%3A%22%3CB05-B04%3E%2F%3CB05%2BB04%3E%22;%22rescale%22%3A%22-1;1%22;%22colormap_name%22%3A%22brbg%22%7D),HLS_False_Color_Vegetation_Landsat(bandCombo=%7B%22r%22%3A%22B06%22;%22g%22%3A%22B05%22;%22b%22%3A%22B04%22%7D),HLS_False_Color_Vegetation_Sentinel(bandCombo=%7B%22r%22%3A%22B11%22;%22g%22%3A%22B8A%22;%22b%22%3A%22B04%22%7D)&lg1=false&ca=true&cv=98&t=2024-09-28-T07%3A40%3A40Z&t1=2024-09-21-T07%3A40%3A40Z",
   },
   {
     id: 3,
     image: "https://i.ibb.co.com/FgYpgx2/pedo-awareness-3.png",
-    title: "Land Surface",
+    title: "Soil Pollution",
   },
 ];
 
@@ -25,7 +25,7 @@ const rightSideData = [
   {
     id: 1,
     image: "https://i.ibb.co.com/58Vy92S/pedo-awareness-2.png",
-    title: "Land Surface",
+    title: "Soil Infertility",
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ const rightSideData = [
   {
     id: 3,
     image: "https://i.ibb.co.com/BshgHFD/pedo-awareness-4.png",
-    title: "Land Surface",
+    title: "Soil Erosion",
   },
 ];
 
@@ -96,6 +96,8 @@ const PedoAwareness = () => {
         awarenessData={atmosphereData}
         resourceLink={resourceLink}
         rightData={rightSideData}
+        main_bg="https://i.ibb.co.com/cQj2s37/Pado-bg.png"
+        secondary_bg="#2daa48"
       />
     </Box>
   );

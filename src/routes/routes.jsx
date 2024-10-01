@@ -8,6 +8,8 @@ import HydroGame from "../pages/hydrosphere/HydroGame";
 import Home from "../pages/home/Home";
 import PedoAwareness from "../pages/pedosphere/PedoAwareness";
 import HydroAwareness from "../pages/hydrosphere/HydroAwareness";
+import Atmosphere from "../pages/atmosphere-page/Atmosphere";
+import AtmoGame from "../pages/atmosphere-page/AtmoGame";
 
 const routes = createBrowserRouter([
     {
@@ -44,6 +46,18 @@ const routes = createBrowserRouter([
         {
           path: '/home/hydrogame',
           element: <HydroGame /> 
+        },
+        {
+          path: '/home/hydro/awareness',
+          element: <HydroAwareness />  
+        },
+        {
+          path: '/home/atmosphere',
+          element: <Atmosphere /> 
+        },
+        {
+          path: '/home/atmogame',
+          element: <AtmoGame /> 
         },
         {
           path: '/home/hydro/awareness',

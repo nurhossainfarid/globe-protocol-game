@@ -32,6 +32,7 @@ const PedoDrop = ({
   setBoard,
   handlePopoverClose,
   handlePopoverOpen,
+  handleTrophy
 }) => {
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
@@ -283,11 +284,11 @@ const PedoDrop = ({
               </Box>
             </Box>
           </Box>
-          <DialogActions>
+          <DialogActions onClick={handleCloseSuccess}>
             <Button
               variant="contained"
               sx={{ background: "green" }}
-              onClick={handleCloseSuccess}
+              onClick={() => handleTrophy(50)}
             >
               Claim trophy
             </Button>
@@ -351,7 +352,7 @@ const PedoDrop = ({
               sx={{ background: "green" }}
               onClick={handleClickPop}
             >
-              Learning Phase
+              Learn Again
             </Button>
             <Button
               variant="contained"

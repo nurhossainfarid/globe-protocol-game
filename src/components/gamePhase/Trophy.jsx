@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import Lottie from "lottie-react";
 import TrophyAnimation from "../../animation/Trophy.json";
+import { useState } from "react";
 
-const Trophy = () => {
+const Trophy = ({trophy}) => {
   return (
     <Box component="div" sx={{ display: "flex", alignItems: "end" }}>
       <Lottie
@@ -22,7 +23,7 @@ const Trophy = () => {
           zIndex: 1,
         }}
       >
-        3,828,426
+        {trophy}
       </Typography>
       <Typography
         sx={{

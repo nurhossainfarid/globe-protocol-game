@@ -127,6 +127,7 @@ const Home = () => {
                 gap: "10px",
               }}
               onClick={() => handleTopic("pedosphere")}
+
             >
               <Box
                 component="img"
@@ -148,7 +149,7 @@ const Home = () => {
               >
                 <Box
                   component="img"
-                  src="https://i.ibb.co.com/WpwcKxs/Rectangle-9257.png"
+                  src="https://i.ibb.co.com/FKhhpNR/pedo.gif"
                   sx={{ width: "250px", height: "180px" }}
                 />
                 <Typography
@@ -198,9 +199,9 @@ const Home = () => {
                 }}
               >
                 <Box
-                  component="iframe"
-                  src="https://giphy.com/embed/MF6ftI1Ge4mApyyauo"
-                  sx={{  width: '100%', height: '100%', border: 'none' }}
+                  component="img"
+                  src="https://i.ibb.co.com/HTDnfNp/hydro.gif"
+                  sx={{  width: "250px", height: "180px" }}
                 />
                 <Typography
                   sx={{
@@ -250,7 +251,7 @@ const Home = () => {
               >
                 <Box
                   component="img"
-                  src="https://i.ibb.co.com/WpwcKxs/Rectangle-9257.png"
+                  src="https://i.ibb.co.com/sHxbm4N/atmo.gif"
                   sx={{ width: "250px", height: "180px" }}
                 />
                 <Typography
@@ -301,7 +302,7 @@ const Home = () => {
               >
                 <Box
                   component="img"
-                  src="https://i.ibb.co.com/WpwcKxs/Rectangle-9257.png"
+                  src="https://i.ibb.co.com/F83JGzP/bio.gif"
                   sx={{ width: "250px", height: "180px" }}
                 />
                 <Typography

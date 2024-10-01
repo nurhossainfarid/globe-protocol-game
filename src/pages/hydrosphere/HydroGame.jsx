@@ -93,7 +93,7 @@ const HydroGame = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundImage: `url(${"https://i.ibb.co.com/tCrZSfR/pond-bg.png"})`,
+        backgroundImage: `url(${"https://i.ibb.co.com/sjxPdb9/hydrobg.png"})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",

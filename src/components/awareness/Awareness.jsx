@@ -34,6 +34,8 @@ const Awareness = ({
   awarenessData,
   resourceLink,
   rightData,
+  main_bg,
+  secondary_bg,
 }) => {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
@@ -62,7 +64,7 @@ const Awareness = ({
       sx={{
         width: "100%",
         height: "100vh",
-        backgroundImage: `url('https://i.ibb.co.com/zPQm0HL/Pedosphere-AWERNESS.png')`,
+        backgroundImage: `url(${main_bg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         backgroundPosition: "center",
@@ -113,7 +115,7 @@ const Awareness = ({
               fontSize: "36px",
             }}
           >
-            AWARENESS  ODYSSEY
+            AWARENESS ODYSSEY
           </Typography>
         </Box>
         {/* Resource */}
@@ -163,13 +165,14 @@ const Awareness = ({
                       textColor="inherit"
                       variant="fullWidth"
                       aria-label="full width tabs example"
-                      sx={{ backgroundColor: "#F0F0F4", color: "black" }}
+                      sx={{ backgroundColor: secondary_bg }}
                     >
                       {awarenessData?.map((data) => (
                         <Tab
                           key={data.id}
                           label={data.title}
                           {...a11yProps(data.id)}
+                          sx={{ color: "white" }}
                         />
                       ))}
                     </Tabs>
@@ -181,18 +184,60 @@ const Awareness = ({
                       index={data.id}
                       dir={theme.direction}
                     >
-                      <Box>
+                      <Box sx={{ marginTop: "-10px", display: 'flex', flexDirection: 'column', gap: '10px' }}>
                         <Box>
-                          <Typography variant="h5">Why it occurs:</Typography>
-                          <Typography>{data.why}</Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontFamily: "Poppins", color: secondary_bg }}
+                          >
+                            Why it occurs:
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontFamily: "Poppins",
+                              color: "#92a2a1",
+                              textAlign: "justify",
+                              fontSize: '15px'
+                            }}
+                          >
+                            {data.why}
+                          </Typography>
                         </Box>
                         <Box>
-                          <Typography variant="h5">How it occurs:</Typography>
-                          <Typography>{data.how}</Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontFamily: "Poppins", color: secondary_bg }}
+                          >
+                            How it occurs:
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontFamily: "Poppins",
+                              color: "#92a2a1",
+                              textAlign: "justify",
+                              fontSize: '15px'
+                            }}
+                          >
+                            {data.how}
+                          </Typography>
                         </Box>
                         <Box>
-                          <Typography variant="h5">What we can do:</Typography>
-                          <Typography>{data.what}</Typography>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontFamily: "Poppins", color: secondary_bg }}
+                          >
+                            What we can do:
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontFamily: "Poppins",
+                              color: "#92a2a1",
+                              textAlign: "justify",
+                              fontSize: '15px'
+                            }}
+                          >
+                            {data.what}
+                          </Typography>
                         </Box>
                       </Box>
                     </TabPanel>
@@ -337,7 +382,7 @@ const Awareness = ({
                 </Typography>
               </Box>
             </DialogContent>
-            <DialogActions sx={{marginTop: '-20px'}}>
+            <DialogActions sx={{ marginTop: "-20px" }}>
               <Button variant="contained" onClick={handleClose}>
                 Ok
               </Button>

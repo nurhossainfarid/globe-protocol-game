@@ -102,11 +102,16 @@ const TreeList = [
 ];
 
 const PedoGame = () => {
+  const [trophy, setTrophy] = useState(100);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
+  const handleTrophy = (claim) => {
+    console.log(claim);
+    setTrophy(trophy + claim)
+  }
   // Dialog
   useEffect(() => {
     setOpen(true);
@@ -320,6 +325,7 @@ const PedoGame = () => {
               flexDirection: "column",
               alignItems: "start",
             }}
+            onClick={() => handleTrophy(1000)}
           >
             <BigWingButton
               link="/home/pedogame/awareness"
@@ -338,10 +344,10 @@ const PedoGame = () => {
           />
         </a>
         {/* Award */}
-        <Award />
+        <Award trophy={trophy} setTrophy={setTrophy} />
       </Box>
       <Box sx={{}}>
-        <Drop TreeList={TreeList} board={board} setBoard={setBoard} />
+        <Drop TreeList={TreeList} board={board} setBoard={setBoard} handleTrophy={handleTrophy}/>
       </Box>
       <Box
         className="slider-container"

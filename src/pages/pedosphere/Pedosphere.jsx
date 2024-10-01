@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import GameInto from "../../components/gamePhase/GameInto";
 import BackButton from "../../components/layouts/BackButton";
 import "./style.css";
+import { useState } from "react";
 
 const Pedosphere = () => {
   return (

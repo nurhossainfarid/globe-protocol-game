@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { decrement, increment } from "../../store/features/trophy/trophySlice";
 import "./style.css";
+import { loseHealth } from "../../store/features/health/healthSlice";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -36,6 +37,7 @@ const PedoDrop = ({
   handlePopoverOpen,
   handleTrophy,
 }) => {
+  const dispatch = useDispatch();
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
 
@@ -76,11 +78,10 @@ const PedoDrop = ({
       list[0].name === "Strawberry" ||
       list[0].name === "Tomato" ||
       list[0].name === "Carrot" ||
-      list[0].name === "Photato" ||
+      list[0].name === "Potato" ||
       list[0].name === "Garlic"
     ) {
       setBoard((board) => [...board, list[0]]);
-      toast.success("Tree plant Successfully");
       setData({
         id: list[0].id,
         url: list[0].url,
@@ -93,20 +94,15 @@ const PedoDrop = ({
       setOpenSuccess(true);
     } else {
       dispatch(decrement(20));
+      dispatch(loseHealth())
       setData({
         id: list[0].id,
         url: list[0].url,
         name: list[0].name,
       });
       setOpenError(true);
-      toast.error("Failed to plant tree");
     }
   };
-
-  // Trophy
-  const value = useSelector((state) => state.trophy.value);
-  const dispatch = useDispatch();
-  console.log(value);
 
   return (
     <div>

@@ -4,8 +4,8 @@ import Awareness from "../../components/awareness/Awareness";
 const leftSideData = [
   {
     id: 1,
-    image: "https://i.ibb.co.com/Rjbqc0D/las-vegas.gif",
-    title: "Land Surface",
+    image: "https://i.ibb.co.com/9N9d8DZ/air-pollution.png",
+    title: "Air Pollution",
   },
   {
     id: 2,
@@ -15,8 +15,8 @@ const leftSideData = [
   },
   {
     id: 3,
-    image: "https://i.ibb.co.com/Rjbqc0D/las-vegas.gif",
-    title: "Land Surface",
+    image: "https://i.ibb.co.com/sC0cwT3/heat-wave.png",
+    title: "Heat Wave",
   },
 ];
 
@@ -24,23 +24,21 @@ const leftSideData = [
 const rightSideData = [
   {
     id: 1,
-    image: "https://i.ibb.co.com/Rjbqc0D/las-vegas.gif",
-    title: "Land Surface",
+    image: "https://i.ibb.co.com/wpcB887/global-warming.pngf",
+    title: "Global Warming",
   },
   {
     id: 2,
-    image: "https://i.ibb.co.com/x7DBG07/temperature.png",
+    image: "https://i.ibb.co.com/jrWYKPX/temperature.gif",
     title: "Temperature",
-    url: "https://worldview.earthdata.nasa.gov/?v=-48.35278669783487,5.2644935325830495,54.619884303512166,55.94635504105855&l=AIRS_L3_Surface_Air_Temperature_Daily_Day,AIRS_L3_Surface_Air_Temperature_Daily_Night,AIRS_L2_Surface_Air_Temperature_Night,AIRS_L2_Surface_Air_Temperature_Day&lg=false&t=2024-09-28-T07%3A40%3A40Z",
+    url: "https://worldview.earthdata.nasa.gov/?v=-178.7047738614786,-85.27018661827908,136.71142549788368,74.08070576639874&i=1&as=2014-09-18-T00%3A00%3A00Z&ae=2024-09-28-T00%3A00%3A00Z&l=AIRS_L3_Surface_Air_Temperature_Daily_Day,AIRS_L3_Surface_Air_Temperature_Daily_Night,AIRS_L2_Surface_Air_Temperature_Night,AIRS_L2_Surface_Air_Temperature_Day&lg=false&ab=on&t=2024-09-18-T00%3A00%3A00Z",
   },
   {
     id: 3,
-    image: "https://i.ibb.co.com/Rjbqc0D/las-vegas.gif",
-    title: "Land Surface",
+    image: "https://i.ibb.co.com/Vq01x60/sea-level-raise.png",
+    title: "Sea Level Raise",
   },
 ];
-
-
 
 const atmosphereData = [
   {
@@ -96,7 +94,7 @@ const resourceLink = [
   },
 ];
 
-const AtmoAwareness = () => { 
+const AtmoAwareness = () => {
   return (
     <Box>
       <Awareness
@@ -104,7 +102,9 @@ const AtmoAwareness = () => {
         leftData={leftSideData}
         awarenessData={atmosphereData}
         resourceLink={resourceLink}
-        rightData={leftSideData}
+        rightData={rightSideData}
+        main_bg="https://i.ibb.co.com/LP7DNzw/atmo-awareness-bg.png"
+        secondary_bg="#d6732a"
       />
     </Box>
   );

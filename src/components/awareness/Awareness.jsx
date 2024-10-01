@@ -11,6 +11,7 @@ import Tabs from "@mui/material/Tabs";
 import Typography from "@mui/material/Typography";
 import { forwardRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { increment } from "../../store/features/trophy/trophySlice";
 import Trophy from "../gamePhase/Trophy";
@@ -18,7 +19,6 @@ import BackButton from "../layouts/BackButton";
 import HomeButton from "../layouts/HomeButton";
 import Side from "./Side";
 import TabPanel from "./TabPanel";
-import { Link } from "react-router-dom";
 
 function a11yProps(index) {
   return {
@@ -106,24 +106,19 @@ const Awareness = ({
           flexDirection: "column",
           marginLeft: "60px",
           marginRight: "60px",
-          marginTop: "-20px",
+          marginTop: "-50px",
         }}
       >
         {/* Text Part */}
-        <Box component="div">
-          <Typography
-            sx={{
-              fontFamily: "Jaro",
-              textAlign: "center",
-              color: "#5A553B",
-              fontSize: "36px",
-            }}
-          >
-            AWARENESS ODYSSEY
-          </Typography>
+        <Box component="div" sx={{ display: 'flex', justifyContent: 'center'}}>
+          <Box
+            component="img"
+            src="https://i.ibb.co.com/KNnhDN9/awareness-bg.png"
+            sx={{width: '700px', marginBottom: '-24px'}}
+          />
         </Box>
         {/* Resource */}
-        <Box component="div" sx={{ display: "flex", gap: "20px" }}>
+        <Box component="div" sx={{ display: "flex", gap: "20px" , opacity: 1}}>
           {/* Left Side */}
           <Box component="div">
             <Side sideData={leftData} />

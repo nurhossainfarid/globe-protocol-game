@@ -10,6 +10,7 @@ import PedoAwareness from "../pages/pedosphere/PedoAwareness";
 import HydroAwareness from "../pages/hydrosphere/HydroAwareness";
 import Atmosphere from "../pages/atmosphere-page/Atmosphere";
 import AtmoGame from "../pages/atmosphere-page/AtmoGame";
+import AtmoAwareness from "../pages/atmosphere-page/AtmoAwareness";
 
 const routes = createBrowserRouter([
     {
@@ -60,8 +61,8 @@ const routes = createBrowserRouter([
           element: <AtmoGame /> 
         },
         {
-          path: '/home/hydro/awareness',
-          element: <HydroAwareness />  
+          path: '/home/atmogame/awareness',
+          element: <AtmoAwareness />  
         },
       ],
     }

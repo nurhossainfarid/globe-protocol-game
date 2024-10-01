@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const [topic, setTopic] = useState("");
@@ -8,6 +9,13 @@ const Home = () => {
   const handleTopic = (name) => {
     setTopic(name);
   };
+
+  const handleSelectTopic = (name) => {
+    if (!topic) {
+      toast.warning("Please select a topic")
+    }
+  }
+
   return (
     <Box
       component="div"
@@ -144,7 +152,7 @@ const Home = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: "10px",
-                  border: topic === "pedosphere" ? "5px solid black" : "",
+                  border: topic === "pedosphere" ? "5px solid #6ff6ff" : "",
                 }}
               >
                 <Box
@@ -165,7 +173,7 @@ const Home = () => {
                     marginTop: "5px",
                   }}
                 >
-                  Pedosphere
+                  Root Revive
                 </Typography>
               </Box>
             </Box>
@@ -195,7 +203,7 @@ const Home = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: "10px", 
-                  border: topic === "hydrosphere" ? "5px solid black" : "",
+                  border: topic === "hydrosphere" ? "5px solid  #6ff6ff" : "",
                 }}
               >
                 <Box
@@ -216,7 +224,7 @@ const Home = () => {
                     marginTop: "5px",
                   }}
                 >
-                  Hydrosphere
+                  Aqua Guardians
                 </Typography>
               </Box>
             </Box>
@@ -246,7 +254,7 @@ const Home = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: "10px",
-                  border: topic === "atmosphere" ? "5px solid black" : "",
+                  border: topic === "atmosphere" ? "5px solid  #6ff6ff" : "",
                 }}
               >
                 <Box
@@ -267,7 +275,7 @@ const Home = () => {
                     marginTop: "5px",
                   }}
                 >
-                  Atmosphere
+                  Sky Keepers
                 </Typography>
               </Box>
             </Box>
@@ -297,7 +305,7 @@ const Home = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: "10px",
-                  border: topic === "biosphere" ? "5px solid black" : "",
+                  border: topic === "biosphere" ? "5px solid  #6ff6ff" : "",
                 }}
               >
                 <Box
@@ -318,12 +326,12 @@ const Home = () => {
                     marginTop: "5px",
                   }}
                 >
-                  Biosphere
+                  Life Wardens
                 </Typography>
               </Box>
             </Box>
           </Box>
-          <Link to={topic}>
+          <Link to={topic} onClick={() => handleSelectTopic(topic)}>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <Box
                 sx={{

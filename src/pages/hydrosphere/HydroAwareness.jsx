@@ -24,8 +24,8 @@ const leftSideData = [
 const rightSideData = [
   {
     id: 1,
-    image: "https://i.ibb.co.com/gjC6F8T/abnormal-water.png",
-    title: "Land Surface",
+    image: "https://i.ibb.co.com/Rjbqc0D/las-vegas.gif",
+    title: "Sea Drying",
   },
   {
     id: 2,
@@ -91,7 +91,7 @@ const HydroAwareness = () => {
   return (
     <Box>
       <Awareness
-        prevPage="/home/pedogame"
+        prevPage="/home/hydrogame"
         leftData={leftSideData}
         awarenessData={atmosphereData}
         resourceLink={resourceLink}

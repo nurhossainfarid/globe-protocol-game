@@ -3,6 +3,7 @@ import {
   Button,
   Dialog,
   DialogActions,
+  Divider,
   Typography,
   useMediaQuery,
 } from "@mui/material";
@@ -17,56 +18,79 @@ import BigWingButton from "../../components/layouts/BigWingButton";
 
 const FishList = [
   {
-    id: 1,
+    id: 0,
     url: "https://i.ibb.co.com/m568bMf/tortoise.gif",
     name: "Tortoise",
     Salinity: "35 - 45 ppt (High Saltwater)",
     Oxygen: "5 - 9 mg/L (Moderate)",
     WaterType: "Warm-Season Fruits and Vegetables",
     Available: "India, China, Turkey",
+    top: 220,
+    left: 520,
+  },
+  {
+    id: 1,
+    url: "https://i.ibb.co.com/BrVvFxR/redfish.gif",
+    name: "Orange Fish",
+    top: 270,
+    left: 125,
   },
   {
     id: 2,
-    url: "https://i.ibb.co.com/BrVvFxR/redfish.gif",
-    name: "Orange Fish",
+    url: "https://i.ibb.co.com/D423Jxq/whitefish.gif",
+    name: "White",
+    top: 270,
+    left: 250,
   },
   {
     id: 3,
-    url: "https://i.ibb.co.com/D423Jxq/whitefish.gif",
-    name: "White",
+    url: "https://i.ibb.co.com/4pmM9xQ/jellyfish.gif",
+    name: "Jelly Fish",
+    top: 270,
+    left: 400,
   },
   {
     id: 4,
-    url: "https://i.ibb.co.com/4pmM9xQ/jellyfish.gif",
-    name: "Jelly Fish",
+    url: "https://i.ibb.co.com/cv8N4Ky/sea-hourse.gif",
+    name: "Sea Horse",
+    top: 280,
+    left: 500,
   },
   {
     id: 5,
-    url: "https://i.ibb.co.com/cv8N4Ky/sea-hourse.gif",
-    name: "Sea Horse",
+    url: "https://i.ibb.co.com/crFQ2wP/Naffe.png",
+    name: "Red Fish",
+    top: 320,
+    left: 200,
   },
   {
     id: 6,
-    url: "https://i.ibb.co.com/crFQ2wP/Naffe.png",
-    name: "Red Fish",
+    url: "https://i.ibb.co.com/hCqZWgL/octopus.gif",
+    name: "Octopus",
+    top: 330,
+    left: 330,
   },
   {
     id: 7,
-    url: "https://i.ibb.co.com/hCqZWgL/octopus.gif",
-    name: "Octopus",
-  },
-  {
-    id: 8,
     url: "https://i.ibb.co.com/WtcRpGc/crab.gif[/img]",
     name: "Crab",
+    top: 350,
+    left: 450,
   },
 ];
 
 const HydroGame = () => {
   const [board, setBoard] = useState([]);
+  const [gameStart, setGameStart] = useState(false);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  // Available fish after drop
+  let availableFish = FishList;
+  availableFish = availableFish.filter(function (el) {
+    return board.indexOf(el) < 0;
+  });
   // Dialog
   useEffect(() => {
     setOpen(true);
@@ -82,6 +106,7 @@ const HydroGame = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  console.log(board);
   return (
     <Box
       component="div"
@@ -89,13 +114,13 @@ const HydroGame = () => {
         height: "100vh",
         position: "relative",
         top: 0,
-        padding: "20px",
+        padding: "10px 20px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundImage: `url(${"https://i.ibb.co.com/sjxPdb9/hydrobg.png"})`,
+        backgroundImage: `url(${"https://i.ibb.co.com/qdj8m9P/hydro-bg-blur.png"})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        backgroundSize: "100% 100%",
         backgroundPosition: "center",
       }}
     >
@@ -169,14 +194,8 @@ const HydroGame = () => {
             <Box
               component="div"
               sx={{ display: "flex", justifyContent: "end", gap: "10px" }}
+              onClick={() => setGameStart(true)}
             >
-              <Button
-                variant="contained"
-                sx={{ background: "white", color: "black" }}
-                onClick={handleClose}
-              >
-                Skip
-              </Button>
               <Button
                 variant="contained"
                 sx={{ background: "white", color: "black" }}
@@ -216,8 +235,16 @@ const HydroGame = () => {
               marginTop="-20px"
             />
           </Box>
+          {/* Map */}
+          <a href="https://worldview.earthdata.nasa.gov/?v=85.51441156565696,22.98939099828811,91.57320988900048,25.86889801393965&s=90.4152,23.8041%2B88.6004,24.3746&t=2024-09-21-T14%3A26%3A02Z">
+            <Box
+              component="img"
+              src="https://i.ibb.co.com/JdMHyNX/map.png"
+              sx={{ height: "100px", marginLeft: "-20px" }}
+            />
+          </a>
           <Box sx={{}}>
-            <Award />
+            <Award start={gameStart} />
           </Box>
         </Box>
         {/* Pond */}
@@ -225,161 +252,94 @@ const HydroGame = () => {
           component="div"
           sx={{
             display: "flex",
-            justifyContent: "space-between",
-            marginTop: "-20px",
+            justifyContent: "center",
+            gap: "30px",
           }}
         >
           {/* Quarantine pond */}
           <Box>
-            <Typography
-              sx={{ fontFamily: "Jaro", size: "36px", textAlign: "center" }}
+            <Box
+              sx={{
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                gap: "5px",
+              }}
             >
-              QUARANTINE POND
-            </Typography>
-            <Box sx={{ position: "relative" }}>
               <Box
-                sx={{ width: "720px", height: "400px" }}
+                sx={{ width: "700px", height: "480px" }}
                 component="img"
                 src="https://i.ibb.co.com/rfL9mmq/quarantine-pond.png"
               />
+              {/* Fishes in pond */}
               <Box
                 component="div"
-                sx={{
-                  background: "#5A553B",
-                  width: "720px",
-                  height: "80px",
-                  borderRadius: "20px",
-                  padding: "2.5px 0px",
-                }}
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
+                {availableFish?.map((f) => (
+                  <HydroDrag
+                    key={f.id}
+                    fish={FishList[f.id]}
+                    top={f.top}
+                    left={f.left}
+                  />
+                ))}
+              </Box>
+              {/* Pond Type */}
+              <Box
+                component="div"
+                sx={{ display: "flex", justifyContent: "center" }}
               >
                 <Box
                   sx={{
-                    background: "white",
-                    width: "710px",
-                    height: "75px",
-                    borderRadius: "20px",
-                    margin: "0 auto",
+                    fontFamily: "Jaro",
+                    border: "2px solid #544E3B",
+                    color: "#5A553B",
+                    fontSize: "22px",
+                    borderRadius: "5px",
+                    display: "flex",
+                    justifyContent: "center",
                   }}
                 >
-                  <Box
-                    component="div"
+                  <Typography
                     sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
+                      background:
+                        "linear-gradient(180deg, #FFC195 8.89%, #FFFFFF 100%)",
+                      padding: "3px 5px",
+                      fontFamily: "Jaro",
+                      fontSize: "22px",
                     }}
                   >
-                    <Typography
-                      sx={{
-                        fontFamily: "Jaro",
-                        fontSize: "24px",
-                        color: "#5A553B",
-                      }}
-                    >
-                      POND TYPE :{" "}
-                    </Typography>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        gap: "20px",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Box
-                        component="div"
-                        sx={{
-                          display: "flex",
-                          gap: "5px",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            fontFamily: "Jaro",
-                            fontSize: "20px",
-                            color: "#5A553B",
-                          }}
-                        >
-                          Salinity:
-                        </Typography>
-                        <Typography
-                          sx={{
-                            background:
-                              "linear-gradient(182.94deg, rgba(140, 124, 42, 0.71) 4.7%, rgba(255, 255, 255, 0.8637) 38.26%, rgba(255, 255, 255, 0.826) 71.81%, rgba(140, 124, 42, 0.71) 105.36%)",
-                            padding: "1px 30px",
-                          }}
-                        >
-                          7.5
-                        </Typography>
-                      </Box>
-                      <Box
-                        component="div"
-                        sx={{
-                          display: "flex",
-                          gap: "5px",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            fontFamily: "Jaro",
-                            fontSize: "20px",
-                            color: "#5A553B",
-                          }}
-                        >
-                          Dissolved Oxygen:
-                        </Typography>
-                        <Typography
-                          sx={{
-                            background:
-                              "linear-gradient(182.94deg, rgba(140, 124, 42, 0.71) 4.7%, rgba(255, 255, 255, 0.8637) 38.26%, rgba(255, 255, 255, 0.826) 71.81%, rgba(140, 124, 42, 0.71) 105.36%)",
-                            padding: "1px 30px",
-                          }}
-                        >
-                          7.5
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Box>
+                    POND TYPE
+                  </Typography>
+                  <Divider orientation="vertical" flexItem />
+                  <Typography
+                    sx={{
+                      background:
+                        "linear-gradient(180deg, #FFF5C1 8.89%, #FFFFFF 100%)",
+                      padding: "3px 5px",
+                      fontFamily: "Jaro",
+                      fontSize: "22px",
+                    }}
+                  >
+                    HIGH SALINITY
+                  </Typography>
                 </Box>
-              </Box>
-              {/* Fishes in pond */}
-              <Box component="div" sx={{}}>
-                {/* Tortoise */}
-                <HydroDrag fish={FishList[0]} top={170} left={520} />
-                {/* Red Fish */}
-                <HydroDrag fish={FishList[1]} top={220} left={125} />
-                <HydroDrag fish={FishList[2]} top={220} left={250} />
-                <HydroDrag fish={FishList[3]} top={220} left={400} />
-                <HydroDrag fish={FishList[4]} top={230} left={500} />
-                <HydroDrag fish={FishList[5]} top={270} left={200} />
-                <HydroDrag fish={FishList[6]} top={280} left={330} />
-                <HydroDrag fish={FishList[7]} top={300} left={450} />
               </Box>
             </Box>
           </Box>
           <Box>
-            <Typography
-              sx={{ fontFamily: "Jaro", size: "36px", textAlign: "center" }}
-            >
-              QUARANTINE POND
-            </Typography>
-            <Box sx={{}}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "5px" }}>
               <Box
                 component="div"
                 src=""
                 sx={{
-                  width: "720px",
-                  height: "500px",
+                  width: "700px",
+                  height: "480px",
                   backgroundImage: `url(${"https://i.ibb.co.com/Gp2h3km/optimal-pond.png"})`,
                   backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
+                  backgroundSize: "100% 100%",
                   backgroundPosition: "center",
-                  borderLeft: "5px solid #544E3B",
-                  borderRight: "5px solid #544E3B",
                   borderRadius: "15px",
                 }}
               >
@@ -388,6 +348,47 @@ const HydroGame = () => {
                   board={board}
                   setBoard={setBoard}
                 />
+              </Box>
+              {/* Pond Type */}
+              <Box
+                component="div"
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
+                <Box
+                  sx={{
+                    fontFamily: "Jaro",
+                    border: "2px solid #544E3B",
+                    color: "#5A553B",
+                    fontSize: "22px",
+                    borderRadius: "5px",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      background:
+                        "linear-gradient(180deg, #20E400 8.89%, #FFFFFF 100%)",
+                      padding: "3px 5px",
+                      fontFamily: "Jaro",
+                      fontSize: "22px",
+                    }}
+                  >
+                    POND TYPE
+                  </Typography>
+                  <Divider orientation="vertical" flexItem />
+                  <Typography
+                    sx={{
+                      background:
+                        "linear-gradient(180deg, #FFF5C1 8.89%, #FFFFFF 100%)",
+                      padding: "3px 5px",
+                      fontFamily: "Jaro",
+                      fontSize: "22px",
+                    }}
+                  >
+                    OPTIMAL
+                  </Typography>
+                </Box>
               </Box>
             </Box>
           </Box>

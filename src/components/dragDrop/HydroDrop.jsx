@@ -12,6 +12,9 @@ import { useState } from "react";
 import { useDrop } from "react-dnd";
 import { toast } from "react-toastify";
 import "./style.css";
+import { useDispatch } from "react-redux";
+import { decrement, increment } from "../../store/features/trophy/trophySlice";
+import { loseHealth } from "../../store/features/health/healthSlice";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -23,6 +26,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 const HydroDrop = ({ FishList, board, setBoard }) => {
+  const dispatch = useDispatch();
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
 
@@ -58,7 +62,8 @@ const HydroDrop = ({ FishList, board, setBoard }) => {
   }));
 
   const addImageToBoard = (id) => {
-    const list = FishList.filter((picture) => id === picture.id);
+    const list = FishList.filter((fish) => id === fish.id);
+    console.log(list);
     if (
       list[0].name === "Tortoise" ||
       list[0].name === "Jelly Fish" ||
@@ -66,7 +71,6 @@ const HydroDrop = ({ FishList, board, setBoard }) => {
       list[0].name === "Crab"
     ) {
       setBoard((board) => [...board, list[0]]);
-      toast.success("Drop Successfully");
       setData({
         id: list[0].id,
         url: list[0].url,
@@ -78,7 +82,8 @@ const HydroDrop = ({ FishList, board, setBoard }) => {
       });
       setOpenSuccess(true);
     } else {
-      toast.error("Failed to drop fish");
+      dispatch(decrement(20));
+      dispatch(loseHealth())
       setData({
         id: list[0].id,
         url: list[0].url,
@@ -257,11 +262,11 @@ const HydroDrop = ({ FishList, board, setBoard }) => {
               </Box>
             </Box>
           </Box>
-          <DialogActions>
+          <DialogActions onClick={handleCloseSuccess}>
             <Button
               variant="contained"
               sx={{ background: "green" }}
-              onClick={handleCloseSuccess}
+              onClick={() => dispatch(increment(50))}
             >
               Claim trophy
             </Button>
@@ -320,13 +325,13 @@ const HydroDrop = ({ FishList, board, setBoard }) => {
               mg/L (Moderate).
             </Typography>
           </Box>
-          <DialogActions>
+          <DialogActions onClick={() => dispatch(increment(10))}>
             <Button
               variant="contained"
               sx={{ background: "green" }}
               onClick={handleClickPop}
             >
-              Learning Phase
+              Learn Again
             </Button>
             <Button
               variant="contained"

@@ -105,10 +105,18 @@ const TreeList = [
 
 const PedoGame = () => {
   const dispatch = useDispatch();
+  const [board, setBoard] = useState([]);
+  const [gameStart, setGameStart] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  // Available fish after drop
+  let availableTree = TreeList;
+  availableTree = availableTree.filter(function (el) {
+    return board.indexOf(el) < 0;
+  });
 
   // Dialog
   useEffect(() => {
@@ -135,7 +143,6 @@ const PedoGame = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  const [board, setBoard] = useState([]);
 
   return (
     <Box
@@ -236,14 +243,8 @@ const PedoGame = () => {
             <Box
               component="div"
               sx={{ display: "flex", justifyContent: "end", gap: "10px" }}
+              onClick={() => setGameStart(true)}
             >
-              <Button
-                variant="contained"
-                sx={{ background: "white", color: "black" }}
-                onClick={handleClose}
-              >
-                Skip
-              </Button>
               <Button
                 variant="contained"
                 sx={{ background: "white", color: "black" }}
@@ -341,7 +342,7 @@ const PedoGame = () => {
           />
         </a>
         {/* Award */}
-        <Award />
+        <Award start={gameStart} />
       </Box>
       <Box sx={{}}>
         <Drop TreeList={TreeList} board={board} setBoard={setBoard}/>
@@ -353,10 +354,11 @@ const PedoGame = () => {
           margin: "0 auto",
           marginBottom: "-5px",
           display: "flex",
+          justifyContent: 'center',
           gap: "20px",
         }}
       >
-        {TreeList.map((tree) => (
+        {availableTree.map((tree) => (
           <Drag key={tree.id} tree={tree} />
         ))}
       </Box>

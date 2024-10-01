@@ -11,7 +11,7 @@ const Atmosphere = () => {
         pic1="https://i.ibb.co.com/hVd4dk8/hydro-Info1.png"
         pic2="https://i.ibb.co.com/Z8k51y4/hydro-Info2.png"
         pic3="https://i.ibb.co.com/9g32Vnz/hydro-Info3.png"
-        title="Atmosphere"
+        title="Sky Keepers"
         comment="Learn How to Play Step by Step, Learn About Atmosphere
 and Speared Awareness !"
         nextPage="/home/atmogame"

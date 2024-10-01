@@ -1,19 +1,32 @@
 import { Box, Typography } from "@mui/material";
 import Lottie from "lottie-react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import Clock from "../../animation/Clock.json";
 import Trophy from "./Trophy";
+import { toast } from "react-toastify";
 
-const number = [1, 2, 3, 4, 5];
+const Award = ({start}) => {
+  const number = useSelector((state) => state.health);
+  let [timeLeft, setTimeLeft] = useState(60);
+  // Function to decrease the timer and display it
+  const startGame = () => {
+    if (timeLeft > 0 && start) {
+      setTimeLeft((timeLeft -= 1));
+    } else {
+      setTimeout(() => {
+        clearInterval(counterInterval);
+      }, 60000);
+    }
+  };
+  let counterInterval = setInterval(startGame, 1000);
 
-
-const Award = () => {
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "end",
-        gap: "5px",
         marginTop: "-5px",
       }}
     >
@@ -59,9 +72,10 @@ const Award = () => {
           </Box>
         </Box>
       </Box>
+      {/* Timer */}
       <Box
         component="div"
-        sx={{ display: "flex", alignItems: "center", marginTop: "-10px" }}
+        sx={{ display: "flex", alignItems: "center", marginTop: "-16px" }}
       >
         <Lottie
           style={{ width: "80px", height: "70px", zIndex: 2 }}
@@ -80,7 +94,7 @@ const Award = () => {
             zIndex: 1,
           }}
         >
-          00:59
+          {timeLeft}
         </Typography>
       </Box>
     </Box>

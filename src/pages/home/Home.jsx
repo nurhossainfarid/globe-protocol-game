@@ -157,7 +157,7 @@ const Home = () => {
               >
                 <Box
                   component="img"
-                  src="https://i.ibb.co.com/FKhhpNR/pedo.gif"
+                  src="https://i.ibb.co.com/rGyQFRt/pedosphere-into.jpg"
                   sx={{ width: "250px", height: "180px" }}
                 />
                 <Typography
@@ -208,7 +208,7 @@ const Home = () => {
               >
                 <Box
                   component="img"
-                  src="https://i.ibb.co.com/HTDnfNp/hydro.gif"
+                  src="https://i.ibb.co.com/1sBBf8F/hydrosphere-into.jpg"
                   sx={{  width: "250px", height: "180px" }}
                 />
                 <Typography
@@ -259,7 +259,7 @@ const Home = () => {
               >
                 <Box
                   component="img"
-                  src="https://i.ibb.co.com/sHxbm4N/atmo.gif"
+                  src="https://i.ibb.co.com/HPcR4Ns/atmosphere-into.jpg"
                   sx={{ width: "250px", height: "180px" }}
                 />
                 <Typography
@@ -310,7 +310,7 @@ const Home = () => {
               >
                 <Box
                   component="img"
-                  src="https://i.ibb.co.com/F83JGzP/bio.gif"
+                  src="https://i.ibb.co.com/m4LMRf7/biosphere-into.jpg"
                   sx={{ width: "250px", height: "180px" }}
                 />
                 <Typography

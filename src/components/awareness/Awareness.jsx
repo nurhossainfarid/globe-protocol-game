@@ -319,7 +319,7 @@ const Awareness = ({
             src="https://i.ibb.co.com/m8MkqrB/claim.png"
           />
         </Box>
-        {/* Dialog */}
+        {/*Level complete Dialog */}
         <Dialog
           open={open}
           TransitionComponent={Transition}
@@ -338,16 +338,17 @@ const Awareness = ({
               background: "#FFFEFF",
               gap: "10px",
               borderRadius: "10px",
+              padding: '20px 36px'
             }}
           >
             <Box
               component="img"
               src="https://i.ibb.co.com/TRwxXhr/complete.png"
               sx={{
-                width: "300px",
-                marginTop: "-100px",
-                position: "relative",
-                left: "5px",
+                width: "400px",
+                position: "absolute",
+                top: '-24vh',
+                left: '-7vh'
               }}
             />
             <DialogTitle
@@ -358,6 +359,7 @@ const Awareness = ({
                 borderRadius: "5px",
                 fontSize: "24px",
                 color: "#FFFFFF",
+                marginTop: '26px'
               }}
             >
               REWARD

@@ -1,101 +1,86 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import Drop from "../../components/dragDrop/PedoDrop";
+import { Box, Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { useEffect, useState } from "react";
+import CloudDrag from "../../components/dragDrop/atmosphere/CloudDrag";
+import CloudDrop from "../../components/dragDrop/atmosphere/CloudDrop";
+import AirPurifierDrag from "../../components/dragDrop/atmosphere/PurifierDrag";
+import PurifierDrop from "../../components/dragDrop/atmosphere/PurifierDrop";
 import Award from "../../components/gamePhase/Award";
 import BackButton from "../../components/layouts/BackButton";
 import BigWingButton from "../../components/layouts/BigWingButton";
 
-const TreeList = [
+const airPurification = [
   {
-    id: 1,
-    url: "https://i.ibb.co.com/bsMgGHF/strawberry.png",
-    name: "Strawberry",
-    pH: "4.5-5.5",
-    Temperature: "0-20°C",
-    SoilType: "Berries and Evergreens, Leafy Greens and Root Vegetables",
-    Available: "USA, Spain, Japan",
+    id: "ap1",
+    url: "https://i.ibb.co.com/ZXtQ37z/Air-Purification1.png",
+    name: "VERTO Air Purification",
   },
   {
-    id: 2,
-    url: "https://i.ibb.co.com/Kmr3HqF/tomato.png",
-    name: "Tomato",
-    pH: "5.5-7.5",
-    Temperature: "10-28°C",
-    SoilType:
-      "Leafy Greens and Root Vegetables, Warm-Season Fruits and Vegetables, Stone Fruits, Medicinal Plants",
-    Available: "USA, Mexico, Italy, South Asia",
+    id: "ap2",
+    url: "https://i.ibb.co.com/m8MQh6C/Air-Purification2.png",
+    name: "FU-888SV Air Purification",
+  },
+];
+
+const solarList = [
+  {
+    id: "sp1",
+    url: "https://i.ibb.co.com/GTLcZHZ/solar1.png",
+    name: "Ground Mounted Solar",
   },
   {
-    id: 3,
-    url: "https://i.ibb.co.com/qRq3NJz/carrot.png",
-    name: "Carrot",
-    pH: "5.5-7.0",
-    Temperature: "8-25°C",
-    SoilType:
-      "Cool-Season Grains, Root Crops, Leafy Greens and Root Vegetables, Legumes and Nitrogen-Fixers",
-    Available: "France, USA, South Asia",
+    id: "sp2",
+    url: "https://i.ibb.co.com/cvh5jLH/solar2.png",
+    name: "Mirror Solar",
+  },
+];
+
+const cloudList = [
+  {
+    id: "c1",
+    url: "https://i.ibb.co.com/jRJHv0P/cloud1.png",
+    name: "Nimbostratus",
   },
   {
-    id: 4,
-    url: "https://i.ibb.co.com/YkZf1qt/garlic.png",
-    name: "Garlic",
-    pH: "5.5-7.0",
-    Temperature: "8-25°C",
-    SoilType:
-      "Cool-Season Grains, Root Crops, Leafy Greens and Root Vegetables, Legumes and Nitrogen-Fixers",
-    Available: "China, India, Egypt",
+    id: "c2",
+    url: "https://i.ibb.co.com/YTJKbMp/cloud2.png",
+    name: "Cumulonimbus",
   },
   {
-    id: 5,
-    url: "https://i.ibb.co.com/jbqr66x/onion.png",
-    name: "Onion",
-    pH: "5.5-7.0",
-    Temperature: "8-28°C",
-    SoilType:
-      "Cool-Season Grains, Root Crops, Legumes and Nitrogen-Fixers, Medicinal Plants",
-    Available: "USA, India, Egypt",
+    id: "c3",
+    url: "https://i.ibb.co.com/0KDMSjg/Cloud3.png",
+    name: "Stratus",
   },
   {
-    id: 6,
-    url: "https://i.ibb.co.com/vBzgCf4/photato.png",
-    name: "Potato",
-    pH: "5.5-6.5",
-    Temperature: "10-18°C or 18-28°C",
-    SoilType: "Root Crops, Leafy Greens and Root Vegetables, Medicinal Plants",
-    Available: "Bangladesh, India, USA",
-  },
-  {
-    id: 7,
-    url: "https://i.ibb.co.com/wSWB2nX/eggplant.png",
-    name: "Eggplant",
-    pH: "6.5-7.5",
-    Temperature: "18-25°C",
-    SoilType: "Warm-Season Fruits and Vegetables",
-    Available: "India, China, Turkey",
-  },
-  {
-    id: 8,
-    url: "https://i.ibb.co.com/V9v1xcH/chilli.png",
-    name: "Chilli",
-    pH: "5.5-7.0",
-    Temperature: "8-20°C",
-    SoilType: "Cool-Season Grains, Leafy Greens and Root Vegetables",
-    Available: "India, Thailand, Mexico",
+    id: "c4",
+    url: "https://i.ibb.co.com/GTpt53X/cloud4.png",
+    name: "Stratocumulus",
   },
 ];
 
 const AtmoGame = () => {
-  const dispatch = useDispatch();
   const [board, setBoard] = useState([]);
+  const [boardCloud, setBoardCloud] = useState([]);
   const [gameStart, setGameStart] = useState(false);
+  const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-  // Available fish after drop
-  let availableTree = TreeList;
-  availableTree = availableTree.filter(function (el) {
-    return board.indexOf(el) < 0;
-  });
+  // Dialog
+  useEffect(() => {
+    setOpen(true);
+  }, []);
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <Box
       component="div"
@@ -153,9 +138,113 @@ const AtmoGame = () => {
         {/* Award */}
         <Award start={gameStart} />
       </Box>
-      <Box sx={{}}>
-        <Drop TreeList={TreeList} board={board} setBoard={setBoard} />
+      {/* Left part */}
+      <Box
+        component="div"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          position: "absolute",
+          top: 150,
+        }}
+      >
+        <Box
+          component="div"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+            backgroundColor: "rgba(139, 145, 130, 0.8)",
+            borderRadius: "10px",
+            width: "170px",
+            padding: "10px 0px",
+          }}
+        >
+          <Typography
+            sx={{ fontFamily: "Jaro", color: "white", fontSize: "20px" }}
+          >
+            ARI PURIFICATION
+          </Typography>
+          {airPurification?.map((air) => (
+            <AirPurifierDrag key={air.id} air={air} />
+          ))}
+        </Box>
+        <Box
+          component="div"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+            backgroundColor: "rgba(139, 145, 130, 0.8)",
+            borderRadius: "10px",
+            width: "170px",
+            padding: "10px 0px",
+          }}
+        >
+          <Typography
+            sx={{ fontFamily: "Jaro", color: "white", fontSize: "20px" }}
+          >
+            SOLAR PANELS
+          </Typography>
+          {solarList?.map((air) => (
+            <AirPurifierDrag key={air.id} air={air} />
+          ))}
+        </Box>
       </Box>
+      {/* Drop */}
+      <Box sx={{}}>
+        <CloudDrop CloudList={cloudList} boardCloud={boardCloud} setBoardCloud={setBoardCloud} />
+        <PurifierDrop
+          PurifierList={airPurification}
+          SolarList={solarList}
+          board={board}
+          setBoard={setBoard}
+        />
+      </Box>
+      {/* right part */}
+      <Box
+        component="div"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          position: "absolute",
+          top: 250,
+          right: 20,
+        }}
+      >
+        <Box
+          component="div"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+            backgroundColor: "rgba(139, 145, 130, 0.8)",
+            borderRadius: "10px",
+            width: "170px",
+            padding: "10px 0px",
+          }}
+        >
+          <Typography
+            sx={{ fontFamily: "Jaro", color: "white", fontSize: "20px" }}
+          >
+            CLOUDS
+          </Typography>
+          {cloudList?.map((cloud) => (
+            <CloudDrag key={cloud.id} cloud={cloud} />
+          ))}
+        </Box>
+      </Box>
+      {/* <Box sx={{}}>
+        <Drop TreeList={TreeList} board={board} setBoard={setBoard} />
+      </Box> */}
     </Box>
   );
 };

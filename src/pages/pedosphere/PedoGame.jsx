@@ -1,25 +1,15 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  Popover,
-  Typography,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { Box, Popover, Typography } from "@mui/material";
 import Lottie from "lottie-react";
-import { useEffect, useState } from "react";
-import Slider from "react-slick";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import Earth from "../../animation/Earth.json";
 import Drag from "../../components/dragDrop/PedoDrag";
 import Drop from "../../components/dragDrop/PedoDrop";
 import Award from "../../components/gamePhase/Award";
+import LearningPhase from "../../components/gamePhase/LearningPhase";
 import BackButton from "../../components/layouts/BackButton";
 import BigWingButton from "../../components/layouts/BigWingButton";
 import "./style.css";
-import { useDispatch } from "react-redux";
-import { increment } from "../../store/features/trophy/trophySlice";
 
 const TreeList = [
   {
@@ -77,8 +67,7 @@ const TreeList = [
     name: "Potato",
     pH: "5.5-6.5",
     Temperature: "10-18°C or 18-28°C",
-    SoilType:
-      "Root Crops, Leafy Greens and Root Vegetables, Medicinal Plants",
+    SoilType: "Root Crops, Leafy Greens and Root Vegetables, Medicinal Plants",
     Available: "Bangladesh, India, USA",
   },
   {
@@ -87,8 +76,7 @@ const TreeList = [
     name: "Eggplant",
     pH: "6.5-7.5",
     Temperature: "18-25°C",
-    SoilType:
-      "Warm-Season Fruits and Vegetables",
+    SoilType: "Warm-Season Fruits and Vegetables",
     Available: "India, China, Turkey",
   },
   {
@@ -97,8 +85,7 @@ const TreeList = [
     name: "Chilli",
     pH: "5.5-7.0",
     Temperature: "8-20°C",
-    SoilType:
-      "Cool-Season Grains, Leafy Greens and Root Vegetables",
+    SoilType: "Cool-Season Grains, Leafy Greens and Root Vegetables",
     Available: "India, Thailand, Mexico",
   },
 ];
@@ -108,24 +95,16 @@ const PedoGame = () => {
   const [board, setBoard] = useState([]);
   const [gameStart, setGameStart] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [open, setOpen] = useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  const handleGameStart = (value) => {
+    setGameStart(value);
+  };
 
   // Available fish after drop
   let availableTree = TreeList;
   availableTree = availableTree.filter(function (el) {
     return board.indexOf(el) < 0;
   });
-
-  // Dialog
-  useEffect(() => {
-    setOpen(true);
-  }, []);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   // popover
   const handlePopoverOpen = (event) => {
@@ -137,12 +116,6 @@ const PedoGame = () => {
   };
 
   const open2 = Boolean(anchorEl);
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
 
   return (
     <Box
@@ -176,86 +149,15 @@ const PedoGame = () => {
       >
         <Typography sx={{ p: 1 }}>I use Popover.</Typography>
       </Popover>
-      <Dialog
-        fullScreen={fullScreen}
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
-      >
-        <Box
-          component="div"
-          className="slider-container"
-          sx={{ background: "#33abb5", borderRadius: '10px', margin: '5px' }}
-        >
-          <Slider {...settings}>
-            {TreeList.map((tree) => (
-              <Box component="div" key={tree.id}>
-                <Box
-                  component="div"
-                  sx={{ display: "flex", flexDirection: "column" }}
-                >
-                  <Box
-                    component="div"
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      gap: "16px",
-                      marginTop: "10px",
-                    }}
-                  >
-                    <Box component="img" src={tree.url} />
-                    {/* Plant Info */}
-                    <Box component="div">
-                      <Typography
-                        variant="h4"
-                        sx={{ fontFamily: "Jaro", color: "white" }}
-                      >
-                        {tree.name}
-                      </Typography>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "1px",
-                        }}
-                      >
-                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
-                          Ph: {tree.pH}
-                        </Typography>
-                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
-                          Temperature: {tree.Temperature}
-                        </Typography>
-                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
-                          Soil Type: {tree.SoilType}
-                        </Typography>
-                        <Typography sx={{ fontFamily: "Jaro", color: "white" }}>
-                          Grow's In: {tree.Available}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            ))}
-          </Slider>
-          <DialogActions sx={{ marginTop: "-20px" }}>
-            <Box
-              component="div"
-              sx={{ display: "flex", justifyContent: "end", gap: "10px" }}
-              onClick={() => setGameStart(true)}
-            >
-              <Button
-                variant="contained"
-                sx={{ background: "white", color: "black" }}
-                onClick={handleClose}
-              >
-                Start Game
-              </Button>
-            </Box>
-          </DialogActions>
-        </Box>
-      </Dialog>
+      {/* Learning Phase */}
+      <LearningPhase
+        Datalist={TreeList}
+        handleGameStart={handleGameStart}
+        firstData={"Ph:"}
+        secondData={"Temperature:"}
+        thirdData={"SoilType:"}
+        fourthData={"Available:"}
+      />
       <Box
         sx={{
           display: "flex",
@@ -345,7 +247,7 @@ const PedoGame = () => {
         <Award start={gameStart} />
       </Box>
       <Box sx={{}}>
-        <Drop TreeList={TreeList} board={board} setBoard={setBoard}/>
+        <Drop TreeList={TreeList} board={board} setBoard={setBoard} />
       </Box>
       <Box
         className="slider-container"
@@ -354,7 +256,7 @@ const PedoGame = () => {
           margin: "0 auto",
           marginBottom: "-5px",
           display: "flex",
-          justifyContent: 'center',
+          justifyContent: "center",
           gap: "20px",
         }}
       >

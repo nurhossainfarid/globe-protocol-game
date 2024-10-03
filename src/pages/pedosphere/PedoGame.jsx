@@ -131,24 +131,6 @@ const PedoGame = () => {
         justifyContent: "space-between",
       }}
     >
-      <Popover
-        id="mouse-over-popover"
-        sx={{ pointerEvents: "none" }}
-        open={open2}
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-        onClose={handlePopoverClose}
-        disableRestoreFocus
-      >
-        <Typography sx={{ p: 1 }}>I use Popover.</Typography>
-      </Popover>
       {/* Learning Phase */}
       <LearningPhase
         Datalist={TreeList}

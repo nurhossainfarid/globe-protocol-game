@@ -10,8 +10,6 @@ const Transition = forwardRef(function Transition(props, ref) {
 });
 
 const CompleteGame = ({ trophy, open, handleClose, next, replay }) => {
-  const dispatch = useDispatch();
-
   return (
     <Dialog
       open={open}

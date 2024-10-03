@@ -8,9 +8,9 @@ const Atmosphere = () => {
         bg1="https://i.ibb.co.com/3f8xDVR/hydro-bg.png"
         bg2="https://i.ibb.co.com/3f8xDVR/hydro-bg.png"
         bg3="https://i.ibb.co.com/xgW3LHm/sky.png"
-        pic1="https://i.ibb.co.com/hVd4dk8/hydro-Info1.png"
-        pic2="https://i.ibb.co.com/Z8k51y4/hydro-Info2.png"
-        pic3="https://i.ibb.co.com/9g32Vnz/hydro-Info3.png"
+        pic1="https://i.ibb.co.com/GxhfZ8p/atmogame-info.png"
+        pic2="https://i.ibb.co.com/MP5NVgL/atmogame-reward-info.png"
+        pic3="https://i.ibb.co.com/S0VVFW0/atmogame-demo.png"
         title="Sky Keepers"
         comment="Learn How to Play Step by Step, Learn About Atmosphere
 and Speared Awareness !"

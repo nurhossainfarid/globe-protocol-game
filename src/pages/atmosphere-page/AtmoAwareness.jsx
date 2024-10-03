@@ -9,8 +9,8 @@ const leftSideData = [
   },
   {
     id: 2,
-    image: "https://i.ibb.co.com/KyKP5RP/Arosole-Layer.png",
-    title: "AEROSOL LAYER",
+    image: "https://i.ibb.co.com/JHMBLFc/AEROSO.gif",
+    title: "AEROSOL LAYER MAP",
     url: "https://worldview.earthdata.nasa.gov/?v=75.30150139424218,19.527140838886055,98.37650755418808,30.88437043323443&l=Reference_Labels_15m(hidden),Reference_Features_15m(hidden),Coastlines_15m,VIIRS_NOAA20_Aerosol_Type_Deep_Blue_Best_Estimate,OMI_UV_Aerosol_Index,OMI_Aerosol_Index&lg=false&l1=Reference_Labels_15m(hidden),Reference_Features_15m(hidden),Coastlines_15m,VIIRS_NOAA20_Aerosol_Type_Deep_Blue_Best_Estimate,OMI_UV_Aerosol_Index,OMI_Aerosol_Index&lg1=false&ca=true&cv=2&s=90.4155,23.7073&t=2024-09-28-T07%3A07%3A14Z&t1=2024-09-21-T07%3A07%3A14Z",
   },
   {
@@ -30,7 +30,7 @@ const rightSideData = [
   {
     id: 2,
     image: "https://i.ibb.co.com/jrWYKPX/temperature.gif",
-    title: "Temperature",
+    title: "Temperature MAP",
     url: "https://worldview.earthdata.nasa.gov/?v=-178.7047738614786,-85.27018661827908,136.71142549788368,74.08070576639874&i=1&as=2014-09-18-T00%3A00%3A00Z&ae=2024-09-28-T00%3A00%3A00Z&l=AIRS_L3_Surface_Air_Temperature_Daily_Day,AIRS_L3_Surface_Air_Temperature_Daily_Night,AIRS_L2_Surface_Air_Temperature_Night,AIRS_L2_Surface_Air_Temperature_Day&lg=false&ab=on&t=2024-09-18-T00%3A00%3A00Z",
   },
   {
@@ -206,6 +206,8 @@ const AtmoAwareness = () => {
         rightData={rightSideData}
         main_bg="https://i.ibb.co.com/LP7DNzw/atmo-awareness-bg.png"
         secondary_bg="#d6732a"
+        nextPage={"/home/biosphere"}
+        replay={"/home/atmogame"}
       />
     </Box>
   );

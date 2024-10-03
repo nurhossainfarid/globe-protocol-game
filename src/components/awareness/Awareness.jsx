@@ -19,7 +19,7 @@ import BackButton from "../layouts/BackButton";
 import HomeButton from "../layouts/HomeButton";
 import Side from "./Side";
 import TabPanel from "./TabPanel";
-import CompleteGame from "../layouts/CompleteGame";
+import CompleteGame from "../gamePhase/CompleteGame";
 
 function a11yProps(index) {
   return {

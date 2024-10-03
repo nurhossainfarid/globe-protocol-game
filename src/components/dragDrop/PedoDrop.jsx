@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import { decrement, increment } from "../../store/features/trophy/trophySlice";
 import "./style.css";
 import { loseHealth } from "../../store/features/health/healthSlice";
+import SuccessDialog from "../gamePhase/SuccessDialog";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -217,81 +218,7 @@ const PedoDrop = ({
         </Box>
       </Popover>
       {/* Success Dialog */}
-      <BootstrapDialog
-        aria-labelledby="customized-dialog-title"
-        open={openSuccess}
-      >
-        <Box component="div" sx={{ background: "green" }}>
-          <DialogTitle
-            sx={{
-              m: 0,
-              p: 2,
-              textAlign: "center",
-              color: "white",
-              fontFamily: "Poppins",
-              fontWeight: "800",
-              fontSize: "24px",
-            }}
-            id="customized-dialog-title"
-          >
-            Correct...
-          </DialogTitle>
-          <IconButton
-            aria-label="close"
-            onClick={handleCloseSuccess}
-            sx={(theme) => ({
-              position: "absolute",
-              right: 8,
-              top: 8,
-              color: "white",
-            })}
-          >
-            <CloseIcon />
-          </IconButton>
-        </Box>
-        <DialogContent
-          dividers
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box component="img" src={data.url} sx={{ width: "150px" }} />
-            <Box component="div">
-              <Typography variant="h4" sx={{ fontFamily: "Jaro" }}>
-                {data.name}
-              </Typography>
-              <Box sx={{}}>
-                <Typography sx={{ fontFamily: "Jaro" }}>
-                  Ph: {data.pH}
-                </Typography>
-                <Typography sx={{ fontFamily: "Jaro" }}>
-                  Temperature: {data.Temperature}
-                </Typography>
-                <Typography sx={{ fontFamily: "Jaro" }}>
-                  Soil Type: {data.SoilType}
-                </Typography>
-                <Typography sx={{ fontFamily: "Jaro" }}>
-                  Grow's In: {data.Available}
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-          <DialogActions onClick={handleCloseSuccess}>
-            <Button
-              variant="contained"
-              sx={{ background: "green" }}
-              onClick={() => dispatch(increment(50))}
-            >
-              Claim trophy
-            </Button>
-          </DialogActions>
-        </DialogContent>
-      </BootstrapDialog>
+      <SuccessDialog data={data} open={openSuccess} handleCloseSuccess={handleCloseSuccess} />
       {/* Error Dialog */}
       <BootstrapDialog
         aria-labelledby="customized-dialog-title"

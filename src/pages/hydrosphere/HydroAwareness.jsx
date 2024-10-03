@@ -98,6 +98,8 @@ const HydroAwareness = () => {
         rightData={rightSideData}
         main_bg="https://i.ibb.co.com/sjxPdb9/hydrobg.png"
         secondary_bg="#27b0aa"
+        nextPage={"/home/atmosphere"}
+        replay={"/home/hydrogame"}
       />
     </Box>
   );

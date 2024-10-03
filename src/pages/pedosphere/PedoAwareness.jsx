@@ -98,6 +98,8 @@ const PedoAwareness = () => {
         rightData={rightSideData}
         main_bg="https://i.ibb.co.com/cQj2s37/Pado-bg.png"
         secondary_bg="#2daa48"
+        nextPage={"/home/hydrosphere"}
+        replay={"/home/pedogame"}
       />
     </Box>
   );

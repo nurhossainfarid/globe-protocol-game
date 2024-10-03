@@ -16,7 +16,6 @@ import {
   decrement,
   increment,
 } from "../../../store/features/trophy/trophySlice";
-import { toast } from "react-toastify";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -31,8 +30,8 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const PurifierDrop = ({ PurifierList, SolarList, board, setBoard }) => {
-    const dropList = PurifierList.concat(SolarList);
+const PurifierDrop = ({ PurifierList, SolarList, board, setBoard, handleStopPollution }) => {
+  const dropList = PurifierList.concat(SolarList);
   const dispatch = useDispatch();
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
@@ -87,7 +86,6 @@ const PurifierDrop = ({ PurifierList, SolarList, board, setBoard }) => {
         Available: list[0].Available,
       });
       setOpenSuccess(true);
-      toast.success("Correct")
     } else {
       dispatch(decrement(20));
       dispatch(loseHealth());
@@ -97,6 +95,12 @@ const PurifierDrop = ({ PurifierList, SolarList, board, setBoard }) => {
         name: list[0].name,
       });
       setOpenError(true);
+    }
+    if (
+      list[0].name === "VERTO Air Purification" ||
+      list[0].name === "FU-888SV Air Purification"
+    ) {
+      handleStopPollution(true);
     }
   };
 

@@ -16,8 +16,8 @@ const CloudDrag = ({ cloud }) => {
       sx={{
         background: "#cdd0c9",
         borderRadius: "10px",
-        width: "140px",
-        height: "70px",
+        width: "150px",
+        height: "80px",
       }}
     >
       <Box

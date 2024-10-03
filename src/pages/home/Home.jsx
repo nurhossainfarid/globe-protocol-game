@@ -144,14 +144,14 @@ const Home = () => {
               <Box
                 component="div"
                 sx={{
-                  background: "#3D70AB",
+                  background: topic === "pedosphere" ? "rgba(61, 112, 171, 0.8)" : "rgba(61, 112, 171, 0.5)",
                   width: "300px",
                   height: "280px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  borderRadius: "10px",
+                  borderRadius: "10px", 
                   border: topic === "pedosphere" ? "5px solid #6ff6ff" : "",
                 }}
               >
@@ -195,7 +195,7 @@ const Home = () => {
               <Box
                 component="div"
                 sx={{
-                  background: "#3D70AB",
+                  background: topic === "hydrosphere" ? "rgba(61, 112, 171, 0.8)" : "rgba(61, 112, 171, 0.5)",
                   width: "300px",
                   height: "280px",
                   display: "flex",
@@ -246,7 +246,7 @@ const Home = () => {
               <Box
                 component="div"
                 sx={{
-                  background: "#3D70AB",
+                  background: topic === "atmosphere" ? "rgba(61, 112, 171, 0.8)" : "rgba(61, 112, 171, 0.5)",
                   width: "300px",
                   height: "280px",
                   display: "flex",
@@ -297,7 +297,7 @@ const Home = () => {
               <Box
                 component="div"
                 sx={{
-                  background: "#3D70AB",
+                 background: topic === "biosphere" ? "rgba(61, 112, 171, 0.8)" : "rgba(61, 112, 171, 0.5)",
                   width: "300px",
                   height: "280px",
                   display: "flex",

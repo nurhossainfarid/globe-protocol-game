@@ -19,6 +19,7 @@ import BackButton from "../layouts/BackButton";
 import HomeButton from "../layouts/HomeButton";
 import Side from "./Side";
 import TabPanel from "./TabPanel";
+import CompleteGame from "../layouts/CompleteGame";
 
 function a11yProps(index) {
   return {
@@ -39,6 +40,8 @@ const Awareness = ({
   rightData,
   main_bg,
   secondary_bg,
+  nextPage,
+  replay
 }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -110,15 +113,15 @@ const Awareness = ({
         }}
       >
         {/* Text Part */}
-        <Box component="div" sx={{ display: 'flex', justifyContent: 'center'}}>
+        <Box component="div" sx={{ display: "flex", justifyContent: "center" }}>
           <Box
             component="img"
             src="https://i.ibb.co.com/KNnhDN9/awareness-bg.png"
-            sx={{width: '700px', marginBottom: '-24px'}}
+            sx={{ width: "700px", marginBottom: "-24px" }}
           />
         </Box>
         {/* Resource */}
-        <Box component="div" sx={{ display: "flex", gap: "20px" , opacity: 1}}>
+        <Box component="div" sx={{ display: "flex", gap: "20px", opacity: 1 }}>
           {/* Left Side */}
           <Box component="div">
             <Side sideData={leftData} />
@@ -188,7 +191,7 @@ const Awareness = ({
                           marginTop: "-10px",
                           display: "flex",
                           flexDirection: "column",
-                          gap: "10px",
+                          gap: "16px",
                         }}
                       >
                         <Box>
@@ -198,16 +201,30 @@ const Awareness = ({
                           >
                             Why it occurs:
                           </Typography>
-                          <Typography
+
+                          <Box
                             sx={{
-                              fontFamily: "Poppins",
-                              color: "#92a2a1",
-                              textAlign: "justify",
-                              fontSize: "15px",
+                              display: "flex",
+                              gap: "20px",
+                              marginTop: "2px",
                             }}
                           >
-                            {data.why}
-                          </Typography>
+                            <Typography
+                              sx={{
+                                fontFamily: "Poppins",
+                                color: "#92a2a1",
+                                textAlign: "justify",
+                                fontSize: "15px",
+                              }}
+                            >
+                              {data.why}
+                            </Typography>
+                            <Box
+                              component="img"
+                              src={data.whyUrl}
+                              sx={{ width: data.imgWidth }}
+                            />
+                          </Box>
                         </Box>
                         <Box>
                           <Typography
@@ -216,16 +233,29 @@ const Awareness = ({
                           >
                             How it occurs:
                           </Typography>
-                          <Typography
+                          <Box
                             sx={{
-                              fontFamily: "Poppins",
-                              color: "#92a2a1",
-                              textAlign: "justify",
-                              fontSize: "15px",
+                              display: "flex",
+                              gap: "20px",
+                              marginTop: "5px",
                             }}
                           >
-                            {data.how}
-                          </Typography>
+                            <Box
+                              component="img"
+                              src={data.howUrl}
+                              sx={{ width: data.imgWidth }}
+                            />
+                            <Typography
+                              sx={{
+                                fontFamily: "Poppins",
+                                color: "#92a2a1",
+                                textAlign: "justify",
+                                fontSize: "15px",
+                              }}
+                            >
+                              {data.how}
+                            </Typography>
+                          </Box>
                         </Box>
                         <Box>
                           <Typography
@@ -234,16 +264,101 @@ const Awareness = ({
                           >
                             What we can do:
                           </Typography>
-                          <Typography
+                          <Box
                             sx={{
-                              fontFamily: "Poppins",
-                              color: "#92a2a1",
-                              textAlign: "justify",
-                              fontSize: "15px",
+                              display: "flex",
+                              gap: "20px",
+                              marginTop: "5px",
                             }}
                           >
-                            {data.what}
+                            <Typography
+                              sx={{
+                                fontFamily: "Poppins",
+                                color: "#92a2a1",
+                                textAlign: "justify",
+                                fontSize: "15px",
+                              }}
+                            >
+                              {data.what}
+                            </Typography>
+                            <Box
+                              component="img"
+                              src={data.solutionUrl}
+                              sx={{ width: data.imgWidth }}
+                            />
+                          </Box>
+                        </Box>
+                        {/* Nasa Monitoring */}
+                        <Box>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontFamily: "Poppins", color: "#0063ac" }}
+                          >
+                            How is NASA monitoring {data.title}?
                           </Typography>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              gap: "20px",
+                              marginTop: "5px",
+                            }}
+                          >
+                            <Typography
+                              sx={{
+                                fontFamily: "Poppins",
+                                color: "#595a59",
+                                textAlign: "justify",
+                                fontSize: "15px",
+                              }}
+                            >
+                              {data.nasaMonitoring}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        {/* Learn by nasa */}
+                        <Box>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontFamily: "Poppins", color: "#0063ac" }}
+                          >
+                            Related NASA Missions
+                          </Typography>
+                          <Box component="div" sx={{display: 'flex', gap: '32px', marginTop: '10px'}}>
+                            {data.relatedMission?.map((mission) => (
+                              <Box
+                                key={mission.title}
+                                component="a"
+                                target="_blank"
+                                href={mission.url}
+                                sx={{
+                                  textDecoration: "none",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  alignItems: "center",
+                                }}
+                              >
+                                <Box
+                                  component="img"
+                                  src={mission.img}
+                                  sx={{
+                                    background: "#0b3b8c",
+                                    borderRadius: "100%",
+                                    width: "100px",
+                                  }}
+                                />
+                                <Typography
+                                  sx={{
+                                    fontFamily: "Poppins",
+                                    fontWeight: "500",
+                                    color: "#0b3b8c",
+                                    fontSize: "16px",
+                                  }}
+                                >
+                                  {mission.title}
+                                </Typography>
+                              </Box>
+                            ))}
+                          </Box>
                         </Box>
                       </Box>
                     </TabPanel>
@@ -317,91 +432,11 @@ const Awareness = ({
             }}
             component="img"
             src="https://i.ibb.co.com/m8MkqrB/claim.png"
+            onClick={() => dispatch(increment(1000))}
           />
         </Box>
         {/*Level complete Dialog */}
-        <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={handleClose}
-          aria-describedby="alert-dialog-slide-description"
-          sx={{}}
-        >
-          <Box
-            component="div"
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              background: "#FFFEFF",
-              gap: "10px",
-              borderRadius: "10px",
-              padding: '20px 36px'
-            }}
-          >
-            <Box
-              component="img"
-              src="https://i.ibb.co.com/TRwxXhr/complete.png"
-              sx={{
-                width: "400px",
-                position: "absolute",
-                top: '-24vh',
-                left: '-7vh'
-              }}
-            />
-            <DialogTitle
-              sx={{
-                backgroundColor: "#F78A3B",
-                padding: "2px 10px",
-                fontFamily: "Jaro",
-                borderRadius: "5px",
-                fontSize: "24px",
-                color: "#FFFFFF",
-                marginTop: '26px'
-              }}
-            >
-              REWARD
-            </DialogTitle>
-            <DialogContent>
-              <Box
-                component="div"
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
-              >
-                <Box
-                  component="img"
-                  src="https://i.ibb.co.com/ggJBB9Y/icn-trophy-512-3.png"
-                  sx={{ height: "70px" }}
-                />
-                <Typography
-                  sx={{
-                    fontFamily: "Jaro",
-                    color: "#228AED",
-                    fontSize: "40px",
-                  }}
-                >
-                  1000
-                </Typography>
-              </Box>
-            </DialogContent>
-            <DialogActions
-              sx={{ marginTop: "-20px" }}
-              onClick={() => dispatch(increment(1000))}
-            >
-              <Link to="/home">
-                <Button variant="contained" onClick={handleClose}>
-                  Ok
-                </Button>
-              </Link>
-            </DialogActions>
-          </Box>
-        </Dialog>
+        <CompleteGame trophy={1000} open={open} handleClose={handleClose} next={nextPage} replay={replay} />
       </Box>
     </Box>
   );

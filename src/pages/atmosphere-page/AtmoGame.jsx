@@ -1,6 +1,5 @@
-import { Box, Typography, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { useEffect, useState } from "react";
+import { Box, Typography } from "@mui/material";
+import { useState } from "react";
 import CloudDrag from "../../components/dragDrop/atmosphere/CloudDrag";
 import CloudDrop from "../../components/dragDrop/atmosphere/CloudDrop";
 import AirPurifierDrag from "../../components/dragDrop/atmosphere/PurifierDrag";
@@ -38,41 +37,44 @@ const solarList = [
 const cloudList = [
   {
     id: "c1",
-    url: "https://i.ibb.co.com/jRJHv0P/cloud1.png",
+    url: "https://i.ibb.co.com/WgpS6Rf/cloud1.gif",
     name: "Nimbostratus",
   },
   {
     id: "c2",
-    url: "https://i.ibb.co.com/YTJKbMp/cloud2.png",
+    url: "https://i.ibb.co.com/6nyBbDb/cloud3.gif",
     name: "Cumulonimbus",
   },
   {
     id: "c3",
-    url: "https://i.ibb.co.com/0KDMSjg/Cloud3.png",
+    url: "https://i.ibb.co.com/ScTJjZG/cloud6.gif",
     name: "Stratus",
   },
   {
     id: "c4",
-    url: "https://i.ibb.co.com/GTpt53X/cloud4.png",
+    url: "https://i.ibb.co.com/DChgpYs/cloud4.gif",
     name: "Stratocumulus",
+  },
+  {
+    id: "c5",
+    url: "https://i.ibb.co.com/34vxnsZ/cloud5.gif",
+    name: "Altostratus",
   },
 ];
 
 const AtmoGame = () => {
   const [board, setBoard] = useState([]);
+  const [rain, setRain] = useState(false);
+  const [stopPollution, setStopPollution] = useState(false);
   const [boardCloud, setBoardCloud] = useState([]);
   const [gameStart, setGameStart] = useState(false);
-  const [open, setOpen] = useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-  // Dialog
-  useEffect(() => {
-    setOpen(true);
-  }, []);
+  const handleRain = (value) => {
+    setRain(value);
+  };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleStopPollution = (value) => {
+    setStopPollution(value);
   };
 
   const settings = {
@@ -81,6 +83,16 @@ const AtmoGame = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  let atmo_bg;
+  if (stopPollution && rain) {
+    atmo_bg = "https://i.ibb.co.com/Ln6knMm/Rain.gif";
+  } else if (rain) {
+    atmo_bg = "https://i.ibb.co.com/Ln6knMm/Rain.gif";
+  } else if (stopPollution) {
+    atmo_bg = "https://i.ibb.co.com/SBbQVS8/atmo-bg-good.png";
+  } else {
+    atmo_bg = "https://i.ibb.co.com/Sy7qmpS/atmo-bg-bd.png";
+  }
   return (
     <Box
       component="div"
@@ -92,7 +104,7 @@ const AtmoGame = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundImage: `url(${"https://i.ibb.co.com/Sy7qmpS/atmo-bg-bd.png"})`,
+        backgroundImage: `url(${atmo_bg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         backgroundPosition: "center",
@@ -115,13 +127,13 @@ const AtmoGame = () => {
           }}
         >
           <BackButton
-            link="/home/hydrosphere"
+            link="/home/atmosphere"
             width="100px"
             height="100px"
             marginLeft="-20px"
           />
           <BigWingButton
-            link="/home/hydro/awareness"
+            link="/home/atmogame/awareness"
             height="50px"
             marginTop="-20px"
           />
@@ -142,7 +154,7 @@ const AtmoGame = () => {
       <Box
         component="div"
         sx={{
-          display: "flex",
+          display: rain ? "none" : "flex",
           flexDirection: "column",
           gap: "20px",
           position: "absolute",
@@ -198,23 +210,29 @@ const AtmoGame = () => {
       </Box>
       {/* Drop */}
       <Box sx={{}}>
-        <CloudDrop CloudList={cloudList} boardCloud={boardCloud} setBoardCloud={setBoardCloud} />
+        <CloudDrop
+          CloudList={cloudList}
+          boardCloud={boardCloud}
+          setBoardCloud={setBoardCloud}
+          handleRain={handleRain}
+        />
         <PurifierDrop
           PurifierList={airPurification}
           SolarList={solarList}
           board={board}
           setBoard={setBoard}
+          handleStopPollution={handleStopPollution}
         />
       </Box>
       {/* right part */}
       <Box
         component="div"
         sx={{
-          display: "flex",
+          display: rain ? "none" : "flex",
           flexDirection: "column",
           gap: "20px",
           position: "absolute",
-          top: 250,
+          top: 180,
           right: 20,
         }}
       >

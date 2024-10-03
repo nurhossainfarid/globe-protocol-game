@@ -26,7 +26,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const CloudDrop = ({ CloudList, boardCloud, setBoardCloud }) => {
+const CloudDrop = ({ CloudList, boardCloud, setBoardCloud, handleRain }) => {
   const dispatch = useDispatch();
   const [openError, setOpenError] = useState(false);
   const [openSuccess, setOpenSuccess] = useState(false);
@@ -65,10 +65,9 @@ const CloudDrop = ({ CloudList, boardCloud, setBoardCloud }) => {
   const addImageToboardCloud = (id) => {
     const list = CloudList.filter((fish) => id === fish.id);
     if (
-      list[0].name === "Nimbostratus" ||
-      list[0].name === "FU-888SV Air Purification" ||
-      list[0].name === "Ground Mounted Solar" ||
-      list[0].name === "Mirror Solar"
+      (list[0].name === "Cumulonimbus") ||
+      list[0].name === "Stratocumulus" ||
+      list[0].name === "Altostratus"
     ) {
       setBoardCloud((boardCloud) => [...boardCloud, list[0]]);
       setData({
@@ -92,6 +91,10 @@ const CloudDrop = ({ CloudList, boardCloud, setBoardCloud }) => {
       setOpenError(true);
     }
   };
+
+  if (boardCloud.length >= 2) {
+    handleRain(true)
+  }
 
   return (
     <div>

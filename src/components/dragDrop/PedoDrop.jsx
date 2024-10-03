@@ -1,21 +1,15 @@
-import CloseIcon from "@mui/icons-material/Close";
 import { Box, Popover, Slide } from "@mui/material";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { forwardRef, useState } from "react";
 import { useDrop } from "react-dnd";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { decrement, increment } from "../../store/features/trophy/trophySlice";
-import "./style.css";
+import { useDispatch } from "react-redux";
 import { loseHealth } from "../../store/features/health/healthSlice";
+import { decrement } from "../../store/features/trophy/trophySlice";
+import ErrorDialog from "../gamePhase/ErrorDialog";
 import SuccessDialog from "../gamePhase/SuccessDialog";
+import "./style.css";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -95,7 +89,7 @@ const PedoDrop = ({
       setOpenSuccess(true);
     } else {
       dispatch(decrement(20));
-      dispatch(loseHealth())
+      dispatch(loseHealth());
       setData({
         id: list[0].id,
         url: list[0].url,
@@ -218,79 +212,27 @@ const PedoDrop = ({
         </Box>
       </Popover>
       {/* Success Dialog */}
-      <SuccessDialog data={data} open={openSuccess} handleCloseSuccess={handleCloseSuccess} />
+      <SuccessDialog
+        data={data}
+        open={openSuccess}
+        handleCloseSuccess={handleCloseSuccess}
+        firstData={"Ph:"}
+        secondData={"Temperature:"}
+        thirdData={"SoilType:"}
+        fourthData={"Available:"}
+      />
       {/* Error Dialog */}
-      <BootstrapDialog
-        aria-labelledby="customized-dialog-title"
+      <ErrorDialog
+        data={data}
         open={openError}
-        sx={{}}
-      >
-        <Box component="div" sx={{ background: "red" }}>
-          <DialogTitle
-            sx={{
-              m: 0,
-              p: 2,
-              textAlign: "center",
-              color: "white",
-              fontFamily: "Poppins",
-              fontWeight: "800",
-              fontSize: "24px",
-            }}
-            id="customized-dialog-title"
-          >
-            Wrong...
-          </DialogTitle>
-          <IconButton
-            aria-label="close"
-            onClick={handleCloseError}
-            sx={(theme) => ({
-              position: "absolute",
-              right: 8,
-              top: 8,
-              color: "white",
-            })}
-          >
-            <CloseIcon />
-          </IconButton>
-        </Box>
-        <DialogContent
-          dividers
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box component="img" src={data.url} sx={{ width: "150px" }} />
-            <Typography sx={{ fontFamily: "Poppins", fontSize: "18px" }}>
-              {data.name} is not a perfect tree for this soil. This tree is
-              perfect for pH: 8, TMP: 80F, MTR: 8.
-            </Typography>
-          </Box>
-          <DialogActions>
-            <Box onClick={() => dispatch(increment(10))}>
-              <Button
-                variant="contained"
-                sx={{ background: "green" }}
-                onClick={handleClickPop}
-              >
-                Learn Again
-              </Button>
-            </Box>
-            <Button
-              variant="contained"
-              sx={{ background: "red" }}
-              onClick={handleCloseError}
-            >
-              Retry
-            </Button>
-          </DialogActions>
-        </DialogContent>
-      </BootstrapDialog>
+        handleCloseError={handleCloseError}
+        handleClickPop={handleClickPop}
+        comment={` ${data.name} is not a perfect tree for this soil. This tree is
+                perfect for pH: ${data.pH}, TMP: ${data.Temperature} and
+                ${data.SoilType} types of soil.`}
+      />
 
+      {/* Drop */}
       <Box
         ref={drop}
         component="div"

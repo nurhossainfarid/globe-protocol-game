@@ -17,14 +17,12 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const SuccessDialog = ({
+const ErrorDialog = ({
   data,
   open,
-  handleCloseSuccess,
-  firstData,
-  secondData,
-  thirdData,
-  fourthData,
+  handleCloseError,
+  handleClickPop,
+  comment
 }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -42,7 +40,7 @@ const SuccessDialog = ({
           borderRadius: "100%",
           height: "0px",
           position: "relative",
-          bottom: "150px",
+          bottom: "200px",
           borderTop: "0px",
         },
       }}
@@ -52,7 +50,7 @@ const SuccessDialog = ({
         className="slider-container"
         sx={{
           margin: "5px",
-          backgroundImage: `url(${"https://i.ibb.co.com/pZmhYXs/correct-bg.png"})`,
+          backgroundImage: `url(${"https://i.ibb.co.com/4fN1f73/wrong-bg.png"})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
@@ -69,7 +67,6 @@ const SuccessDialog = ({
             paddingRight: "5px",
           }}
         >
-          <Box component="div" sx={{ background: "green" }}></Box>
           <DialogContent
             dividers
             sx={{
@@ -81,32 +78,24 @@ const SuccessDialog = ({
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Box component="img" src={data?.url} sx={{ width: "150px" }} />
-              <Box component="div">
-                <Typography variant="h4" sx={{ fontFamily: "Jaro" }}>
-                  {data?.name}
-                </Typography>
-                <Box sx={{}}>
-                  <Typography sx={{ fontFamily: "Jaro" }}>
-                    {firstData} {Object.values(data)[3]}
-                  </Typography>
-                  <Typography sx={{ fontFamily: "Jaro" }}>
-                    {secondData} {Object.values(data)[4]}
-                  </Typography>
-                  <Typography sx={{ fontFamily: "Jaro" }}>
-                    {thirdData} {Object.values(data)[5]}
-                  </Typography>
-                  <Typography sx={{ fontFamily: "Jaro" }}>
-                    {fourthData} {Object.values(data)[6]}
-                  </Typography>
-                </Box>
-              </Box>
+              <Box component="img" src={data.url} sx={{ width: "150px" }} />
+              <Typography sx={{ fontFamily: "Poppins", fontSize: "18px" }}>
+               {comment}
+              </Typography>
             </Box>
-            <DialogActions onClick={handleCloseSuccess}>
+            <DialogActions>
+              <Box onClick={() => dispatch(increment(10))}>
+                <Box
+                  component="img"
+                  src="https://i.ibb.co.com/7twQBRW/Learn-Again-Btn.png"
+                  onClick={handleClickPop}
+                  sx={{ width: "180px", margin: "0 auto" }}
+                />
+              </Box>
               <Box
                 component="img"
-                src="https://i.ibb.co.com/NWLBj17/claim-Trophy-Btn.png"
-                onClick={() => dispatch(increment(50))}
+                src="https://i.ibb.co.com/Ydh99zp/RetryBtn.png"
+                onClick={handleCloseError}
                 sx={{ width: "180px", margin: "0 auto" }}
               />
             </DialogActions>
@@ -117,4 +106,4 @@ const SuccessDialog = ({
   );
 };
 
-export default SuccessDialog;
+export default ErrorDialog;

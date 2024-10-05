@@ -47,6 +47,30 @@ const atmosphereData = [
     why: "Soil pollution happens due to the accumulation of harmful chemicals, heavy metals, and waste products, which become more dangerous when soil pH or temperature conditions exacerbate their effects.",
     how: "Soil pH and temperature significantly influence soil pollution. Acidic soils increase the solubility and mobility of heavy metals like lead and cadmium, making them more toxic and harmful to plants and groundwater. Conversely, alkaline soils can lead to the accumulation of salts and reduce nutrient availability. High temperatures accelerate chemical reactions and pollutant degradation, making toxic substances more reactive and easily absorbed by the environment. In contrast, low temperatures slow microbial breakdown of pollutants, allowing contaminants to persist in the soil for longer periods.",
     what: "Restore balanced soil pH by using lime to reduce acidity or sulfur to lower alkalinity. Reduce the use of harmful pesticides and fertilizers, and focus on organic farming practices. Use bioremediation (plants and microbes) to clean up contaminated soils.",
+    nasaMonitoring:
+      "NASA uses satellites like Landsat, Terra, and SMAP (Soil Moisture Active Passive) to monitor soil pollution, providing data on land degradation, soil moisture levels, and surface composition. A new instrument, the ECOSTRESS (Ecosystem Spaceborne Thermal Radiometer Experiment on Space Station), helps scientists study soil and vegetation health under stress conditions. By analyzing this data alongside other environmental indicators, scientists can better understand the impact of soil pollution on ecosystems, agriculture, and water resources globally.",
+    whyUrl: "https://i.ibb.co.com/CVFDh4c/soi-Pollution-why.webp",
+    howUrl: "https://i.ibb.co.com/nn63h4R/soil-Pollution-how.webp",
+    solutionUrl: "https://i.ibb.co.com/ZdLpbGG/soil-Pollution-solution.webp",
+    imgWidth: "250px",
+    additionalResources: ["https://climatekids.nasa.gov/air-pollution/"],
+    relatedMission: [
+      {
+        title: "Landsat",
+        url: "https://landsat.gsfc.nasa.gov/",
+        img: "https://climatekids.nasa.gov/resources/featured/missions/PACE.png",
+      },
+      {
+        title: "SMAP",
+        url: "https://smap.jpl.nasa.gov/",
+        img: "https://climatekids.nasa.gov/resources/featured/missions/OCO-2.png",
+      },
+      {
+        title: "Terra",
+        url: "https://terra.nasa.gov/",
+        img: "https://climatekids.nasa.gov/resources/featured/missions/Terra.png",
+      },
+    ],
   },
   {
     id: 1,
@@ -54,6 +78,30 @@ const atmosphereData = [
     why: "Soil erosion occurs when the topsoil is washed or blown away by wind or water, often due to poor land management and soil structure being weakened by unfavorable pH or temperature conditions.",
     how: "The interplay of soil pH and temperature contributes to soil erosion. Acidic soils lose essential binding minerals, weakening soil structure and increasing susceptibility to erosion, while alkaline soils can become compacted, hindering water infiltration and causing runoff that washes away topsoil. High temperatures dry out soil, making it brittle and more prone to wind erosion, whereas low temperatures cause freeze-thaw cycles that break down soil particles, further increasing the risk of erosion.",
     what: "To prevent erosion, maintain an optimal soil pH by balancing acidity and alkalinity. Use cover crops and no-till farming to protect the soil from wind and water erosion. Plant trees or hedges to act as windbreaks and minimize soil loss, and increase organic matter to improve soil structure.",
+    nasaMonitoring:
+      "NASA uses satellites like Landsat, Terra, and SMAP (Soil Moisture Active Passive) to monitor soil erosion, providing data on land cover changes, soil moisture, and vegetation health. A new instrument, GEDI (Global Ecosystem Dynamics Investigation), helps scientists study the structure of forests and how vegetation affects soil stability. By analyzing this data alongside other environmental indicators, scientists can better understand the causes and effects of soil erosion on ecosystems, agriculture, and water resources worldwide.",
+    whyUrl: "https://giphy.com/gifs/monochrome-expansion-erosion-1n1GEZzBjIuPvYbMUN",
+    howUrl: "https://giphy.com/gifs/soil-hES3mFdWoatVe",
+    solutionUrl: "https://media.giphy.com/media/qyq2pRcWdupE2926oI/giphy.gif?cid=790b7611ax1tu8b8lxjdqu09l8exmigb1x67djk305yf7zjx&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+    imgWidth: "250px",
+    additionalResources: ["https://climatekids.nasa.gov/air-pollution/"],
+    relatedMission: [
+      {
+        title: "Landsat",
+        url: "https://landsat.gsfc.nasa.gov/",
+        img: "https://climatekids.nasa.gov/resources/featured/missions/PACE.png",
+      },
+      {
+        title: "Terra",
+        url: "https://terra.nasa.gov/",
+        img: "https://climatekids.nasa.gov/resources/featured/missions/Terra.png",
+      },
+      {
+        title: "SMAP",
+        url: "https://smap.jpl.nasa.gov/",
+        img: "https://climatekids.nasa.gov/resources/featured/missions/OCO-2.png",
+      },
+    ],
   },
   {
     id: 2,
@@ -61,6 +109,32 @@ const atmosphereData = [
     why: "Soil infertility happens when essential nutrients are depleted, or when unfavorable soil pH and temperature conditions limit the availability and uptake of these nutrients by plants.",
     how: "Soil pH and temperature are key factors in soil infertility. In acidic soils, nutrients like nitrogen, phosphorus, and potassium become less available, while toxic metals become more soluble and harmful to plants. In alkaline soils, nutrient absorption is severely restricted, leading to poor plant growth. Additionally, high temperatures accelerate organic matter decomposition, rapidly depleting nutrients, while low temperatures slow down microbial activity, hindering nutrient cycling and exacerbating infertility.",
     what: "Manage soil pH by adding lime to reduce acidity or sulfur to adjust alkalinity. Rotate crops to prevent nutrient depletion and incorporate organic matter like compost or manure to restore fertility. Use mulching to regulate soil temperature and moisture, supporting microbial life and nutrient availability.",
+    nasaMonitoring:
+      "NASA uses satellites like Landsat, Terra, and SMAP (Soil Moisture Active Passive) to monitor soil erosion, providing data on land cover changes, soil moisture, and vegetation health. A new instrument, GEDI (Global Ecosystem Dynamics Investigation), helps scientists study the structure of forests and how vegetation affects soil stability. By analyzing this data alongside other environmental indicators, scientists can better understand the causes and effects of soil erosion on ecosystems, agriculture, and water resources worldwide.",
+    whyUrl:
+      "https://media.giphy.com/media/wjNlyOPO9Qp9RrYIPU/giphy.gif?cid=ecf05e474sqrhm6e422rgedr297717sulgf7uahoem2udpwl&ep=v1_gifs_related&rid=giphy.gif&ct=g",
+    howUrl: "https://media.giphy.com/media/RiKPp6KSRhmLlor54V/giphy.gif?cid=ecf05e471za1e4b0e08uj0f3ivm68hx4pd8xvnhm87h2vemt&ep=v1_gifs_related&rid=giphy.gif&ct=g",
+    solutionUrl:
+      "https://media.giphy.com/media/d83U1vYHFiczd83cjZ/giphy.gif?cid=ecf05e47xb5w34hm5d9zu0bzy0ll14gbr0pwjt29pyc5ds4k&ep=v1_gifs_related&rid=giphy.gif&ct=g",
+    imgWidth: "250px",
+    additionalResources: ["https://climatekids.nasa.gov/air-pollution/"],
+    relatedMission: [
+      {
+        title: "Landsat",
+        url: "https://landsat.gsfc.nasa.gov/",
+        img: "https://climatekids.nasa.gov/resources/featured/missions/PACE.png",
+      },
+      {
+        title: "Terra",
+        url: "https://terra.nasa.gov/",
+        img: "https://climatekids.nasa.gov/resources/featured/missions/Terra.png",
+      },
+      {
+        title: "SMAP",
+        url: "https://smap.jpl.nasa.gov/",
+        img: "https://climatekids.nasa.gov/resources/featured/missions/OCO-2.png",
+      },
+    ],
   },
 ];
 

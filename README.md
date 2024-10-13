@@ -1,11 +1,9 @@
-
 # Globe Protocol Game
 
 "Save Stella_3024" is an educational game created by Team Orbvengers for NASA's Space Apps Challenge 2024. Our game "Save Stella_3024" is an educational game designed to raise environmental awareness. Players solve real-world ecological issues like pollution and climate change using GLOBE protocol data and machine learning. Set in a future Earth, players must restore balance by addressing crises in the Pedosphere (soil), Hydrosphere (water), Biosphere (living organisms), and Atmosphere (air). Real-time NASA Worldview mapping enhances gameplay with live environmental data. Learning about science can be a fun experience! Our Games that focus on science and environmental issues can create opportunities for players to develop their interests and gain knowledge while engaging with each other in a fun way.
 
 #### Game Url: https://stella3024-orbvengers.netlify.app/
 #### Game Code: https://github.com/nurhossainfarid/globe-protocol-game
-#### Server Url:
 #### Server Code: https://github.com/nurhossainfarid/globe-protocol-server
 #### Machine Learning Model Url: https://save-stella-3024-game-ml-model.onrender.com/
 #### Machine Learning Code: https://github.com/rayhankhan2192/SAVE_STELLA_3024_game_ML_Model
@@ -79,9 +77,16 @@
     npm run deploy
     ```
 
-## Contributing
+## Open contributions
 
 We welcome contributions to this project in the form of code, documentation, or financial support. If you are interested in contributing, please see our [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
+
+## Team contributions
+[Md. Rahat](https://github.com/rahat2924)
+[Asiful Haque](https://github.com/Asiful-Haque)
+[MASRAFE BIN HANNAN SIAM](https://github.com/Masrafe-Siam)
+[Md. Rayhan Khan](https://github.com/rayhankhan2192)
+[Meherin Khandakar Priya](https://github.com/meher-priya)
 
 
 ## License
